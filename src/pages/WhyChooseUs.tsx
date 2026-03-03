@@ -11,15 +11,48 @@ import {
     Users,
     Zap
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
+// Type declarations for Three.js and custom properties
+declare global {
+  interface HTMLCanvasElement {
+    _threeInit?: boolean;
+  }
+  interface Window {
+    THREE?: any;
+  }
+}
+
+// Define types for advantage items
+interface Advantage {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  details: string;
+}
+
+interface Benefit {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+}
+
+interface ProcessStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
 const WhyChooseUs = () => {
-  const [showScrollButton, setShowScrollButton] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
+
+  // Add ref for canvas container
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
 
   // Show button when scrolling
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       if (window.scrollY > 300) {
         setShowScrollButton(true);
       } else {
@@ -32,7 +65,7 @@ const WhyChooseUs = () => {
   }, []);
 
   // Scroll to top
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -42,8 +75,8 @@ const WhyChooseUs = () => {
       rootMargin: "0px 0px -50px 0px",
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("animate-in");
           observer.unobserve(entry.target);
@@ -52,12 +85,12 @@ const WhyChooseUs = () => {
     }, observerOptions);
 
     const elements = document.querySelectorAll(".reveal");
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach((el: Element) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
 
-  const advantages = [
+  const advantages: Advantage[] = [
     {
       icon: Users,
       title: "Client-Centric Approach",
@@ -103,7 +136,7 @@ const WhyChooseUs = () => {
     },
   ];
 
-  const additionalBenefits = [
+  const additionalBenefits: Benefit[] = [
     {
       icon: Target,
       title: "Transparent Communication",
@@ -136,7 +169,7 @@ const WhyChooseUs = () => {
     },
   ];
 
-  const processSteps = [
+  const processSteps: ProcessStep[] = [
     {
       step: "1",
       title: "Initial Consultation",
@@ -194,92 +227,98 @@ const WhyChooseUs = () => {
   <svg className="absolute top-0 right-0 w-96 h-96 text-cyan-200/30" style={{ zIndex: 1 }} viewBox="0 0 200 200" fill="none">
     <path d="M0 100 L200 100 M100 0 L100 200 M50 0 L50 200 M150 0 L150 200 M0 50 L200 50 M0 150 L200 150"
       stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
-
   </svg>
 
-  {/* Three.js Canvas Background - Your existing code */}
-  <canvas
-    ref={(canvas) => {
-      if (!canvas || canvas._threeInit) return;
-      canvas._threeInit = true;
+  {/* Three.js Canvas Background - Fixed with container ref */}
+  <div ref={canvasContainerRef} className="absolute inset-0" style={{ zIndex: 0 }}>
+    <canvas
+      ref={(canvas: HTMLCanvasElement | null) => {
+        if (!canvas || canvas._threeInit) return;
+        canvas._threeInit = true;
 
-      const script = document.createElement("script");
-      script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-      script.onload = () => {
-        const THREE = window.THREE;
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        const script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+        script.onload = () => {
+          const THREE = (window as any).THREE;
+          if (!THREE || !canvasContainerRef.current) return;
 
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 1000);
-        camera.position.z = 5;
+          const container = canvasContainerRef.current;
 
-        // Create flashing geometric meshes
-        const geometries = [
-          new THREE.OctahedronGeometry(0.15),
-          new THREE.TetrahedronGeometry(0.15),
-          new THREE.IcosahedronGeometry(0.12),
-        ];
+          const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+          renderer.setSize(container.offsetWidth, container.offsetHeight);
+          renderer.setPixelRatio(window.devicePixelRatio);
 
-        const particles = [];
-        for (let i = 0; i < 10; i++) {
-          const geo = geometries[Math.floor(Math.random() * geometries.length)];
-          const mat = new THREE.MeshBasicMaterial({
-            color: [0x06b6d4, 0x0891b2, 0x22d3ee, 0xa5f3fc][Math.floor(Math.random() * 4)],
-            wireframe: Math.random() > 0.5,
-            transparent: true,
-            opacity: Math.random() * 0.6 + 0.1,
-          });
-          const mesh = new THREE.Mesh(geo, mat);
-          mesh.position.set(
-            (Math.random() - 0.5) * 16,
-            (Math.random() - 0.5) * 8,
-            (Math.random() - 0.5) * 6
-          );
-          mesh.userData = {
-            rotSpeed: { x: (Math.random() - 0.5) * 0.03, y: (Math.random() - 0.5) * 0.03 },
-            flashSpeed: Math.random() * 0.05 + 0.01,
-            flashOffset: Math.random() * Math.PI * 2,
-            driftX: (Math.random() - 0.5) * 0.005,
-            driftY: (Math.random() - 0.5) * 0.003,
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+          camera.position.z = 5;
+
+          // Create flashing geometric meshes
+          const geometries = [
+            new THREE.OctahedronGeometry(0.15),
+            new THREE.TetrahedronGeometry(0.15),
+            new THREE.IcosahedronGeometry(0.12),
+          ];
+
+          const particles: any[] = [];
+          for (let i = 0; i < 10; i++) {
+            const geo = geometries[Math.floor(Math.random() * geometries.length)];
+            const mat = new THREE.MeshBasicMaterial({
+              color: [0x06b6d4, 0x0891b2, 0x22d3ee, 0xa5f3fc][Math.floor(Math.random() * 4)],
+              wireframe: Math.random() > 0.5,
+              transparent: true,
+              opacity: Math.random() * 0.6 + 0.1,
+            });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.set(
+              (Math.random() - 0.5) * 16,
+              (Math.random() - 0.5) * 8,
+              (Math.random() - 0.5) * 6
+            );
+            mesh.userData = {
+              rotSpeed: { x: (Math.random() - 0.5) * 0.03, y: (Math.random() - 0.5) * 0.03 },
+              flashSpeed: Math.random() * 0.05 + 0.01,
+              flashOffset: Math.random() * Math.PI * 2,
+              driftX: (Math.random() - 0.5) * 0.005,
+              driftY: (Math.random() - 0.5) * 0.003,
+            };
+            scene.add(mesh);
+            particles.push(mesh);
+          }
+
+          let t = 0;
+          const animate = () => {
+            requestAnimationFrame(animate);
+            t += 1;
+            particles.forEach((m: any) => {
+              m.rotation.x += m.userData.rotSpeed.x;
+              m.rotation.y += m.userData.rotSpeed.y;
+              m.position.x += m.userData.driftX;
+              m.position.y += m.userData.driftY;
+              // Wrap around edges
+              if (Math.abs(m.position.x) > 9) m.userData.driftX *= -1;
+              if (Math.abs(m.position.y) > 5) m.userData.driftY *= -1;
+              // Flash opacity
+              m.material.opacity = 0.1 + 0.55 * Math.abs(Math.sin(t * m.userData.flashSpeed + m.userData.flashOffset));
+            });
+            renderer.render(scene, camera);
           };
-          scene.add(mesh);
-          particles.push(mesh);
-        }
+          animate();
 
-        let t = 0;
-        const animate = () => {
-          requestAnimationFrame(animate);
-          t += 1;
-          particles.forEach((m) => {
-            m.rotation.x += m.userData.rotSpeed.x;
-            m.rotation.y += m.userData.rotSpeed.y;
-            m.position.x += m.userData.driftX;
-            m.position.y += m.userData.driftY;
-            // Wrap around edges
-            if (Math.abs(m.position.x) > 9) m.userData.driftX *= -1;
-            if (Math.abs(m.position.y) > 5) m.userData.driftY *= -1;
-            // Flash opacity
-            m.material.opacity = 0.1 + 0.55 * Math.abs(Math.sin(t * m.userData.flashSpeed + m.userData.flashOffset));
+          const ro = new ResizeObserver(() => {
+            if (!container) return;
+            const w = container.offsetWidth;
+            const h = container.offsetHeight;
+            renderer.setSize(w, h);
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
           });
-          renderer.render(scene, camera);
+          ro.observe(container);
         };
-        animate();
-
-        const ro = new ResizeObserver(() => {
-          const w = canvas.parentElement.offsetWidth;
-          const h = canvas.parentElement.offsetHeight;
-          renderer.setSize(w, h);
-          camera.aspect = w / h;
-          camera.updateProjectionMatrix();
-        });
-        ro.observe(canvas.parentElement);
-      };
-      document.head.appendChild(script);
-    }}
-    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 0 }}
-  />
+        document.head.appendChild(script);
+      }}
+      style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+    />
+  </div>
 
   {/* Content */}
   <div className="container mx-auto text-center relative z-20">
@@ -312,7 +351,7 @@ const WhyChooseUs = () => {
        style={{ zIndex: 15 }} />
 
   {/* Add animation styles */}
-  <style jsx>{`
+  <style>{`
     @keyframes fadeInDown {
       from {
         opacity: 0;
@@ -367,7 +406,7 @@ const WhyChooseUs = () => {
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
-              {advantages.map((advantage, index) => {
+              {advantages.map((advantage: Advantage, index: number) => {
                 const IconComponent = advantage.icon;
                 return (
                   <div
@@ -409,7 +448,7 @@ const WhyChooseUs = () => {
           </h2>
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {additionalBenefits.map((benefit, index) => {
+              {additionalBenefits.map((benefit: Benefit, index: number) => {
                 const IconComponent = benefit.icon;
                 return (
                   <div
@@ -444,7 +483,7 @@ const WhyChooseUs = () => {
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-6 sm:space-y-8">
-              {processSteps.map((process, index) => (
+              {processSteps.map((process: ProcessStep, index: number) => (
                 <div
                   key={index}
                   className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6 reveal fade-in-left bg-white p-5 sm:p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 group"

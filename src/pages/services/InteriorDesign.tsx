@@ -3,11 +3,10 @@ import {
     Building,
     CheckCircle,
     Home as HomeIcon,
-    Palette,
 } from "lucide-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import ppp1_211 from "../../Commercial Interior Design/Sanjana Bridal boutique/02.jpg";
 const InteriorDesign = () => {
   useEffect(() => {
     const observerOptions = {
@@ -37,7 +36,7 @@ const InteriorDesign = () => {
   {/* Background Image */}
   <div className="absolute inset-0">
     <img
-      src="https://fastly.picsum.photos/id/1047/536/354.jpg?hmac=Hqs-Rz08WiLc2elw4gHvY1P-wxDJfmiZ-CSay2BH-1U"
+      src={ppp1_211}
       alt="Interior Design Hero"
       className="w-full h-full object-cover"
     />
@@ -49,9 +48,7 @@ const InteriorDesign = () => {
   <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6">
     <div className="max-w-4xl mx-auto text-center">
       {/* Icon */}
-      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cyan-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-        <Palette className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-      </div>
+
 
       {/* Heading */}
       <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
@@ -65,19 +62,35 @@ const InteriorDesign = () => {
 
       {/* Description */}
       <p className="text-base sm:text-lg text-white/90 text-justify sm:text-center leading-relaxed px-2 mb-8 sm:mb-10 drop-shadow">
+
+      </p>
+
+
+    <div className="relative z-10 max-w-4xl px-4">
+      <p
+        className="text-base sm:text-lg text-white text-justify sm:text-center
+               px-6 py-6
+               bg-white/10 backdrop-blur-md
+               border border-white/30
+               rounded-xl
+               shadow-lg"
+      >
         At Nitham Designs, interior design is more than styling — it's
         about shaping everyday experiences. We transform raw spaces into
         environments that elevate lifestyle and functionality. Whether
         it's a home, office, cafe, or boutique, our designs speak your
         story with purpose and precision.
       </p>
+    </div>
+
+      <br></br>
 
       {/* Caption Pill */}
       <div className="flex justify-center">
         <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
           <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
           <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
-            slides[0].caption
+            Where Function Meets Aesthetic in Every Detail
           </p>
         </div>
       </div>

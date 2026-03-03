@@ -1,29 +1,35 @@
 import {
     CheckCircle,
     ChevronLeft,
-    ChevronRight,
-    Home as HomeIcon
+    ChevronRight
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import g2 from "../../Residential Interior Design/Mr.Vijaykumar residence/06.jpg";
 
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+interface TestimonialImageSliderProps {
+  images: string[];
+}
 
 // ---------------------------------------------------------------------------
 // Image Slider Component for each testimonial
 // ---------------------------------------------------------------------------
-const TestimonialImageSlider = ({ images }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const TestimonialImageSlider = ({ images }: TestimonialImageSliderProps) => {
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  const nextSlide = () => {
+  const nextSlide = (): void => {
     setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-  const prevSlide = () => {
+  const prevSlide = (): void => {
     setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  const goToSlide = (index) => {
+  const goToSlide = (index: number): void => {
     setCurrentSlide(index);
   };
 
@@ -31,7 +37,7 @@ const TestimonialImageSlider = ({ images }) => {
     <div className="relative h-48 overflow-hidden group/slider">
       {/* Slider Images */}
       <div className="relative h-full">
-        {images.map((image, index) => (
+        {images.map((image: string, index: number) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
@@ -40,15 +46,13 @@ const TestimonialImageSlider = ({ images }) => {
           >
             <img
               src={image}
-
+              alt={`Testimonial slide ${index + 1}`}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60"></div>
           </div>
         ))}
       </div>
-
-
 
       {/* Navigation Buttons */}
       <button
@@ -69,7 +73,7 @@ const TestimonialImageSlider = ({ images }) => {
 
       {/* Slide Indicators */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center space-x-1.5 z-10">
-        {images.map((_, index) => (
+        {images.map((_: string, index: number) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
@@ -103,8 +107,8 @@ const ResidentialInterior = () => {
       rootMargin: "0px 0px -50px 0px",
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("animate-in");
         }
@@ -112,7 +116,7 @@ const ResidentialInterior = () => {
     }, observerOptions);
 
     const elements = document.querySelectorAll(".reveal");
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach((el: Element) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
@@ -122,57 +126,57 @@ const ResidentialInterior = () => {
       {/* ----------------------------------------------------------------- */}
       {/* Hero Section                                                       */}
       {/* ----------------------------------------------------------------- */}
-   {/* Hero Section - Single Image with Content */}
-<section className="relative h-[90vh] overflow-hidden">
-  {/* Background Image */}
-  <div className="absolute inset-0">
-    <img
-      src="https://fastly.picsum.photos/id/1047/536/354.jpg?hmac=Hqs-Rz08WiLc2elw4gHvY1P-wxDJfmiZ-CSay2BH-1U"
-      alt="Residential Interior Design Hero"
-      className="w-full h-full object-cover"
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
-  </div>
-
-  {/* Content Overlay */}
-  <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6">
-    <div className="max-w-4xl mx-auto text-center">
-      {/* Icon */}
-      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cyan-500 rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-        <HomeIcon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-      </div>
-
-      {/* Heading */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
-        Residential Interior Design
-      </h1>
-
-      {/* Subheading */}
-      <p className="text-xl sm:text-2xl text-cyan-300 font-semibold mb-4 sm:mb-6 drop-shadow-md">
-        Live in a Space That Tells Your Story
-      </p>
-
-      {/* Description */}
-      <p className="text-base sm:text-lg text-white/90 text-justify sm:text-center px-2 mb-8 sm:mb-10 drop-shadow">
-        Your home isn't just a place — it's a feeling. At Nitham Designs,
-        we specialize in residential interior design that mirrors your
-        personality, adapts to your lifestyle, and stands the test of
-        time. From minimalist urban apartments to elegant villas, we
-        create homes that feel like you.
-      </p>
-
-      {/* Caption Pill */}
-      <div className="flex justify-center">
-        <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
-          <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
-          <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
-            like you.
-          </p>
+      {/* Hero Section - Single Image with Content */}
+      <section className="relative h-[90vh] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={g2}
+            alt="Residential Interior Design Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Heading */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
+              Residential Interior Design
+            </h1>
+
+            {/* Description */}
+            <div className="relative z-10 max-w-4xl px-4">
+              <p
+                className="text-base sm:text-lg text-white text-justify sm:text-center
+                     px-6 py-6
+                     bg-white/10 backdrop-blur-md
+                     border border-white/30
+                     rounded-xl
+                     shadow-lg"
+              >
+                Your home isn't just a place — it's a feeling. At Nitham Designs,
+                we specialize in residential interior design that mirrors your
+                personality, adapts to your lifestyle, and stands the test of
+                time. From minimalist urban apartments to elegant villas, we
+                create homes that feel like you.
+              </p>
+            </div>
+            <br />
+
+            {/* Caption Pill */}
+            <div className="flex justify-center">
+              <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
+                <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
+                <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
+                  Live in a Space That Tells Your Story
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ----------------------------------------------------------------- */}
       {/* Why Choose Us                                                       */}
@@ -190,7 +194,7 @@ const ResidentialInterior = () => {
                 "Visual balance through textures, lighting, and materials",
                 "Design with empathy — we listen before we plan",
                 "3D or VR walkthrough to experience your future home based on demand",
-              ].map((benefit, index) => (
+              ].map((benefit: string, index: number) => (
                 <div
                   key={index}
                   className="flex items-start space-x-3 sm:space-x-4 reveal"
@@ -226,7 +230,7 @@ const ResidentialInterior = () => {
                 "Furniture & soft furnishing selection",
                 "Lighting, decor, and styling",
                 "On Demand: On-site execution and supervision",
-              ].map((item, index) => (
+              ].map((item: string, index: number) => (
                 <div
                   key={index}
                   className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg reveal"
@@ -285,7 +289,7 @@ const ResidentialInterior = () => {
                   description:
                     "We complete the final touch — ready to live in.",
                 },
-              ].map((process, index) => (
+              ].map((process: { step: string; title: string; description: string }, index: number) => (
                 <div
                   key={index}
                   className="flex items-start space-x-4 sm:space-x-6 reveal"
@@ -307,11 +311,6 @@ const ResidentialInterior = () => {
           </div>
         </div>
       </section>
-
-      {/* ----------------------------------------------------------------- */}
-      {/* Who We Work With                                                    */}
-      {/* ----------------------------------------------------------------- */}
-
 
       {/* ----------------------------------------------------------------- */}
       {/* FAQs                                                                */}
@@ -337,7 +336,7 @@ const ResidentialInterior = () => {
                 question: "Can I get just the design without execution?",
                 answer: "Yes, we offer standalone design packages too.",
               },
-            ].map((faq, index) => (
+            ].map((faq: { question: string; answer: string }, index: number) => (
               <div
                 key={index}
                 className="bg-white p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-lg reveal"

@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import p111 from "../../Commercial Interior Design/Endosys/19.png";
 const CommercialInterior = () => {
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
+      threshold: 0.1
+
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -38,7 +38,7 @@ const CommercialInterior = () => {
   {/* Background Image */}
   <div className="absolute inset-0">
     <img
-      src="https://fastly.picsum.photos/id/1047/536/354.jpg?hmac=Hqs-Rz08WiLc2elw4gHvY1P-wxDJfmiZ-CSay2BH-1U"
+      src={p111}
       alt="Commercial Interior Design Hero"
       className="w-full h-full object-cover"
     />
@@ -48,10 +48,7 @@ const CommercialInterior = () => {
   {/* Content Overlay */}
   <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6">
     <div className="max-w-4xl mx-auto text-center">
-      {/* Icon */}
-      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cyan-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-        <Building className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-      </div>
+
 
       {/* Heading */}
       <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
@@ -60,24 +57,36 @@ const CommercialInterior = () => {
 
       {/* Subheading */}
       <p className="text-lg sm:text-xl lg:text-2xl text-cyan-300 font-semibold mb-4 sm:mb-6 drop-shadow-md">
-        Functional Interiors That Reflect Your Brand
+
       </p>
 
       {/* Description */}
-      <p className="text-base sm:text-lg text-white/90 text-justify sm:text-center leading-relaxed px-2 mb-8 sm:mb-10 drop-shadow">
-        We don't just decorate — we design experiences. At Nitham Designs,
+
+
+        <div className="relative z-10 max-w-4xl px-4">
+      <p
+        className="text-base sm:text-lg text-white text-justify sm:text-center
+               px-6 py-6
+               bg-white/10 backdrop-blur-md
+               border border-white/30
+               rounded-xl
+               shadow-lg"
+      >
+         We don't just decorate — we design experiences. At Nitham Designs,
         we craft commercial interiors across India that amplify your brand
         voice, boost productivity, and foster meaningful engagement.
         Whether it's an office, showroom, cafe, or retail outlet, we align
         your space with your purpose.
       </p>
+    </div>
+    <br></br>
 
       {/* Caption Pill */}
       <div className="flex justify-center">
         <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
           <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
           <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
-            your purpose.
+            Functional Interiors That Reflect Your Brand
           </p>
         </div>
       </div>

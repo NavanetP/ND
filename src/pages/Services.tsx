@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import {
-  Building2,
-  Palette,
-  Home as HomeIcon,
-  Hammer,
-  RefreshCw,
-  Trees,
-  ArrowRight,
-  ArrowUp,
-   Sofa,          // Residential Interior
-  Briefcase
+    ArrowRight,
+    ArrowUp, // Residential Interior
+    Briefcase,
+    Building2,
+    Hammer,
+    Home as HomeIcon,
+    Palette,
+    RefreshCw,
+    Sofa,
+    Trees
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);

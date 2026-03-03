@@ -2,7 +2,7 @@ import { ArrowUp, CheckCircle, Flower, Leaf, Sun, Trees } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import p4444 from "../../Architectural planning/Maraimalainagar residence/Untitled-1.png";
+import p4444 from "../../Residential Interior Design/Mr.Vijaykumar residence/04.jpg";
 
 const LandscapeDesign = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -78,23 +78,34 @@ const LandscapeDesign = () => {
 
       {/* Subheading */}
       <p className="text-lg sm:text-xl md:text-2xl text-cyan-300 font-semibold mb-4 sm:mb-6 drop-shadow-md">
-        Designing Outdoor Spaces That Breathe with You
+
       </p>
 
       {/* Description */}
-      <p className="text-base sm:text-lg text-white/90 text-justify sm:text-center px-2 mb-8 sm:mb-10 drop-shadow">
+
+
+         <div className="relative z-10 max-w-4xl px-4">
+      <p
+        className="text-base sm:text-lg text-white text-justify sm:text-center
+               px-6 py-6
+               bg-white/10 backdrop-blur-md
+               border border-white/30
+               rounded-xl
+               shadow-lg"
+      >
         Landscape design is where architecture meets nature. We design
         residential and commercial landscapes that are usable, meditative,
         and climate-responsive. Whether you have a garden, terrace, or
         courtyard — we bring green thinking into your design.
       </p>
-
+    </div>
+<br></br>
       {/* Caption Pill */}
       <div className="flex justify-center">
         <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
           <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
           <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
-            slides[0].caption
+           Designing Outdoor Spaces That Breathe with You
           </p>
         </div>
       </div>

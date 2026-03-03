@@ -161,11 +161,7 @@ q5,
   };
 
   // Architectural Pattern SVG Component
-  const ArchPattern = ({ className = "" }) => (
-    <svg className={className} viewBox="0 0 100 100" fill="currentColor">
-      <rect x="10" y="10" width="80" height="80" fill="none" stroke="currentColor" strokeWidth="2"/>
-    </svg>
-  );
+
 
   // Geometric SVG Component
   const GeometricPattern = ({ className = "" }) => (
@@ -183,7 +179,7 @@ q5,
 
   return (
     <div className="relative overflow-x-hidden">
-      <style jsx>{`
+      <style>{`
         .reveal {
           opacity: 0;
           transform: translateY(20px);

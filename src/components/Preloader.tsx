@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Home, Palette, Ruler, Brush, Heart } from "lucide-react";
+import { Brush, Heart, Home, Palette, Ruler, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const StyledImagePreloader: React.FC = () => {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -90,8 +90,8 @@ const StyledImagePreloader: React.FC = () => {
 
       <div className="text-center relative z-10 w-full px-4 sm:px-6 max-w-md mx-auto">
         {/* Logo Animation */}
-       
-         
+
+
 
         {/* Company Name + Subtitle */}
         <motion.div

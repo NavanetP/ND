@@ -1,9 +1,9 @@
-import { ArrowUp, Building2, CheckCircle } from "lucide-react";
+import { ArrowUp, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-import img1 from "../Architectural planning/Maraimalainagar residence/Untitled-1.png";
+import p1_2_img1 from "../../Architectural planning/Mr.Balaji Residence/Balaji residence second floor plan-Model.jpg";
 
 const ArchitecturalPlanning = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -58,7 +58,7 @@ const ArchitecturalPlanning = () => {
   {/* Background Image */}
   <div className="absolute inset-0">
     <img
-      src="https://fastly.picsum.photos/id/1047/536/354.jpg?hmac=Hqs-Rz08WiLc2elw4gHvY1P-wxDJfmiZ-CSay2BH-1U"
+      src={p1_2_img1}
       alt="Architectural Planning Hero"
       className="w-full h-full object-cover"
     />
@@ -70,9 +70,7 @@ const ArchitecturalPlanning = () => {
   <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6">
     <div className="max-w-4xl mx-auto text-center">
       {/* Icon */}
-      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cyan-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-        <Building2 className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-      </div>
+
 
       {/* Heading */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
@@ -81,23 +79,36 @@ const ArchitecturalPlanning = () => {
 
       {/* Subheading */}
       <p className="text-lg sm:text-xl md:text-2xl text-cyan-300 font-semibold mb-4 sm:mb-6 drop-shadow-md">
-        Spaces Built to Endure, Flow, and Inspire
+
       </p>
 
       {/* Description */}
-      <p className="text-base sm:text-lg text-white/90 text-justify sm:text-center px-2 mb-8 sm:mb-10 drop-shadow">
-        Architecture is the foundation of a lasting space. At Nitham
+
+
+          <div className="relative z-10 max-w-4xl px-4">
+      <p
+        className="text-base sm:text-lg text-white text-justify sm:text-center
+               px-6 py-6
+               bg-white/10 backdrop-blur-md
+               border border-white/30
+               rounded-xl
+               shadow-lg"
+      >
+          Architecture is the foundation of a lasting space. At Nitham
         Designs, we blend creativity with clarity to design residential
         and commercial spaces across Tamil Nadu that are structurally
         sound, climate-responsive, and aesthetically timeless.
       </p>
+    </div>
+
+      <br></br>
 
       {/* Caption Pill (from original slider) */}
       <div className="flex justify-center">
         <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
           <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
           <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
-           climate-responsive, and aesthetically timeless.
+           Spaces Built to Endure, Flow, and Inspire
           </p>
         </div>
       </div>
