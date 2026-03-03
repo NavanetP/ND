@@ -127,56 +127,78 @@ const ResidentialInterior = () => {
       {/* Hero Section                                                       */}
       {/* ----------------------------------------------------------------- */}
       {/* Hero Section - Single Image with Content */}
-      <section className="relative h-[90vh] overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src={g2}
-            alt="Residential Interior Design Hero"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
+   <section className="relative h-[40vh] xs:h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] 2xl:h-[95vh] overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src={g2}
+      alt="Residential Interior Design Hero"
+      className="w-full h-full object-cover object-center xs:object-top sm:object-center"
+      loading="eager"
+    />
+    <div className="absolute inset-0 bg-gradient-to-b
+      from-black/40 via-black/30 to-black/60
+      xs:from-black/35 xs:via-black/25 xs:to-black/65
+      sm:from-black/30 sm:via-black/20 sm:to-black/60
+      md:from-black/30 md:via-black/20 md:to-black/60"
+    />
+  </div>
+
+  {/* Content Overlay */}
+  <div className="relative z-10 h-full flex flex-col items-center justify-center
+    px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10
+    py-4 xs:py-6 sm:py-8 md:py-10 lg:py-12">
+
+    <div className="w-full max-w-[320px] xs:max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto text-center">
+
+      {/* Heading */}
+      <h1 className="font-bold text-white mb-2 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6
+        text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl
+        drop-shadow-xl leading-tight">
+        Residential Interior Design
+      </h1>
+
+      {/* Description */}
+      <div className="relative z-10 w-full px-2 xs:px-3 sm:px-4 md:px-6">
+        <p className="text-white text-justify sm:text-center
+          text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl
+          px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10
+          py-3 xs:py-4 sm:py-5 md:py-6
+          bg-white/10 backdrop-blur-[2px] xs:backdrop-blur-sm
+          border border-white/20 xs:border-white/30
+          rounded-lg xs:rounded-xl sm:rounded-2xl
+          shadow-sm xs:shadow-md sm:shadow-lg
+          leading-relaxed">
+          Your home isn't just a place — it's a feeling. At Nitham Designs,
+          we specialize in residential interior design that mirrors your
+          personality, adapts to your lifestyle, and stands the test of
+          time. From minimalist urban apartments to elegant villas, we
+          create homes that feel like you.
+        </p>
+      </div>
+
+      <div className="h-2 xs:h-3 sm:h-4 md:h-5" /> {/* Responsive spacing */}
+
+      {/* Caption Pill */}
+      <div className="flex justify-center px-2">
+        <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400
+          text-white whitespace-nowrap
+          px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8
+          py-1.5 xs:py-2 sm:py-2.5 md:py-3
+          rounded-full
+          shadow-[0_2px_8px_rgba(56,189,248,0.3)] xs:shadow-[0_4px_12px_rgba(56,189,248,0.35)] sm:shadow-[0_4px_15px_rgba(56,189,248,0.4)]
+          transition-all duration-500 hover:scale-105">
+          <div className="absolute -inset-[1px] xs:-inset-[2px] rounded-full from-cyan-400/20 to-cyan-400/20 blur-[2px] xs:blur-sm" />
+          <p className="relative z-10
+            text-[9px] xs:text-[10px] sm:text-xs md:text-sm lg:text-base
+            font-semibold tracking-wide drop-shadow-md">
+            Live in a Space That Tells Your Story
+          </p>
         </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
-              Residential Interior Design
-            </h1>
-
-            {/* Description */}
-            <div className="relative z-10 max-w-4xl px-4">
-              <p
-                className="text-base sm:text-lg text-white text-justify sm:text-center
-                     px-6 py-6
-                     bg-white/10 backdrop-blur-md
-                     border border-white/30
-                     rounded-xl
-                     shadow-lg"
-              >
-                Your home isn't just a place — it's a feeling. At Nitham Designs,
-                we specialize in residential interior design that mirrors your
-                personality, adapts to your lifestyle, and stands the test of
-                time. From minimalist urban apartments to elegant villas, we
-                create homes that feel like you.
-              </p>
-            </div>
-            <br />
-
-            {/* Caption Pill */}
-            <div className="flex justify-center">
-              <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
-                <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
-                <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
-                  Live in a Space That Tells Your Story
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ----------------------------------------------------------------- */}
       {/* Why Choose Us                                                       */}

@@ -54,61 +54,76 @@ const ArchitecturalPlanning = () => {
     <div className="relative">
       {/* Hero Section */}
   {/* Hero Section - Single Image with Content */}
-<section className="relative h-[90vh] overflow-hidden">
+<section className="relative h-[40vh] xs:h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] 2xl:h-[95vh] overflow-hidden">
   {/* Background Image */}
   <div className="absolute inset-0">
     <img
       src={p1_2_img1}
       alt="Architectural Planning Hero"
-      className="w-full h-full object-cover"
+      className="w-full h-full object-cover object-center xs:object-top sm:object-center"
+      loading="eager"
     />
-    {/* Dark overlay for text readability */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
+    {/* Dark overlay for text readability - responsive opacity */}
+    <div className="absolute inset-0 bg-gradient-to-b
+      from-black/40 via-black/30 to-black/60
+      xs:from-black/35 xs:via-black/25 xs:to-black/65
+      sm:from-black/30 sm:via-black/20 sm:to-black/60"
+    />
   </div>
 
-  {/* Content Overlay */}
-  <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6">
-    <div className="max-w-4xl mx-auto text-center">
-      {/* Icon */}
+  {/* Content Overlay - responsive padding */}
+  <div className="relative z-10 h-full flex flex-col items-center justify-center
+    px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12
+    py-4 xs:py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16">
 
+    <div className="w-full max-w-[320px] xs:max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto text-center">
 
-      {/* Heading */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
+      {/* Heading - fully responsive font sizes */}
+      <h1 className="font-bold text-white mb-2 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-7
+        text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl
+        drop-shadow-xl leading-tight">
         Architectural Planning
       </h1>
 
-      {/* Subheading */}
-      <p className="text-lg sm:text-xl md:text-2xl text-cyan-300 font-semibold mb-4 sm:mb-6 drop-shadow-md">
-
-      </p>
-
-      {/* Description */}
-
-
-          <div className="relative z-10 max-w-4xl px-4">
-      <p
-        className="text-base sm:text-lg text-white text-justify sm:text-center
-               px-6 py-6
-               bg-white/10 backdrop-blur-md
-               border border-white/30
-               rounded-xl
-               shadow-lg"
-      >
+      {/* Description Card - fully responsive */}
+      <div className="relative z-10 w-full px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8">
+        <p className="text-white text-justify sm:text-center
+          text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
+          px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12
+          py-3 xs:py-4 sm:py-5 md:py-6 lg:py-7 xl:py-8
+          bg-white/10 backdrop-blur-[2px] xs:backdrop-blur-sm
+          border border-white/20 xs:border-white/30
+          rounded-lg xs:rounded-xl sm:rounded-2xl md:rounded-2xl
+          shadow-sm xs:shadow-md sm:shadow-lg md:shadow-xl
+          leading-relaxed">
           Architecture is the foundation of a lasting space. At Nitham
-        Designs, we blend creativity with clarity to design residential
-        and commercial spaces across Tamil Nadu that are structurally
-        sound, climate-responsive, and aesthetically timeless.
-      </p>
-    </div>
+          Designs, we blend creativity with clarity to design residential
+          and commercial spaces across Tamil Nadu that are structurally
+          sound, climate-responsive, and aesthetically timeless.
+        </p>
+      </div>
 
-      <br></br>
+      {/* Responsive spacing */}
+      <div className="h-2 xs:h-3 sm:h-4 md:h-5 lg:h-6" />
 
-      {/* Caption Pill (from original slider) */}
-      <div className="flex justify-center">
-        <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
-          <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
-          <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
-           Spaces Built to Endure, Flow, and Inspire
+      {/* Caption Pill - fully responsive */}
+      <div className="flex justify-center px-2 xs:px-3">
+        <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400
+          text-white whitespace-nowrap
+          px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10
+          py-1.5 xs:py-2 sm:py-2.5 md:py-3 lg:py-3.5
+          rounded-full
+          shadow-[0_2px_8px_rgba(56,189,248,0.3)]
+          xs:shadow-[0_4px_12px_rgba(56,189,248,0.35)]
+          sm:shadow-[0_4px_15px_rgba(56,189,248,0.4)]
+          md:shadow-[0_6px_20px_rgba(56,189,248,0.45)]
+          transition-all duration-500 hover:scale-105">
+          <div className="absolute -inset-[1px] xs:-inset-[2px] rounded-full
+            from-cyan-400/20 to-cyan-400/20 blur-[2px] xs:blur-sm" />
+          <p className="relative z-10
+            text-[9px] xs:text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg
+            font-semibold tracking-wide drop-shadow-md">
+            Spaces Built to Endure, Flow, and Inspire
           </p>
         </div>
       </div>
