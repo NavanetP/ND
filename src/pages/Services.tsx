@@ -9,6 +9,8 @@ import {
   Trees,
   ArrowRight,
   ArrowUp,
+   Sofa,          // Residential Interior
+  Briefcase
 } from "lucide-react";
 
 const Services = () => {
@@ -90,6 +92,37 @@ const Services = () => {
         "Lighting design",
       ],
     },
+
+    {
+      icon: Sofa,
+      title: "Residential Interior",
+      description:
+        "Comfort crafted with character, creating warm and functional homes tailored to your lifestyle and everyday living.",
+      link: "/services/residential-interior",
+      features: [
+        "Ambience design",
+        "Custom wardrobes",
+        "Material curation",
+        "Furniture & decor styling",
+      ],
+    },
+
+
+    {
+      icon: Briefcase,
+      title: "Commercial Interior",
+      description:
+        "Purpose-driven environments designed to enhance productivity, brand identity, and user experience across every workspace.",
+      link: "/services/commercial-interior",
+      features: [
+        "Workspace planning",
+        "Ergonomic layouts",
+        "Acoustics planning",
+        "Brand-integrated design",
+      ],
+    },
+
+
     {
       icon: Hammer,
       title: "Interior Execution",
@@ -134,25 +167,175 @@ const Services = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-br from-cyan-50 to-cyan-100 relative">
-        {/* Background pattern */}
-        <div className="absolute inset-0 -z-10 opacity-10">
-          <div className="absolute top-0 left-0 w-48 h-48 sm:w-72 sm:h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-          <div className="absolute top-0 right-0 w-48 h-48 sm:w-72 sm:h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-6 left-10 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
-        </div>
+     <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-br from-cyan-50 to-cyan-100">
+  {/* Architectural Grid Background Overlay */}
+  <div className="absolute inset-0 opacity-10" style={{ zIndex: 1 }}>
+    <div className="absolute inset-0" style={{
+      backgroundImage: `
+        linear-gradient(to right, #0891b2 1px, transparent 1px),
+        linear-gradient(to bottom, #0891b2 1px, transparent 1px)
+      `,
+      backgroundSize: '40px 40px'
+    }} />
+  </div>
 
-        <div className="container mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4 sm:mb-6 reveal fade-in-down relative">
-            Our <span className="text-cyan-500">Services</span>
-            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-24 h-1 bg-cyan-500 rounded-full"></span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto px-4 reveal fade-in-up" style={{ animationDelay: "0.2s" }}>
-            Comprehensive architectural and interior design solutions tailored
-            to your needs
-          </p>
-        </div>
-      </section>
+  {/* Abstract Architectural Lines - Cyan Theme */}
+  <svg className="absolute top-0 right-0 w-96 h-96 text-cyan-200/30" style={{ zIndex: 1 }} viewBox="0 0 200 200" fill="none">
+    <path d="M0 100 L200 100 M100 0 L100 200 M50 0 L50 200 M150 0 L150 200 M0 50 L200 50 M0 150 L200 150"
+      stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
+    <rect x="20" y="20" width="60" height="60" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <rect x="120" y="120" width="60" height="60" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <circle cx="160" cy="40" r="20" stroke="currentColor" strokeWidth="2" fill="none"/>
+  </svg>
+
+  {/* Three.js Canvas Background - Your existing code */}
+  <canvas
+    ref={(canvas) => {
+      if (!canvas || canvas._threeInit) return;
+      canvas._threeInit = true;
+
+      const script = document.createElement("script");
+      script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+      script.onload = () => {
+        const THREE = window.THREE;
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Create flashing geometric meshes
+        const geometries = [
+          new THREE.OctahedronGeometry(0.15),
+          new THREE.TetrahedronGeometry(0.15),
+          new THREE.IcosahedronGeometry(0.12),
+        ];
+
+        const particles = [];
+        for (let i = 0; i < 10; i++) {
+          const geo = geometries[Math.floor(Math.random() * geometries.length)];
+          const mat = new THREE.MeshBasicMaterial({
+            color: [0x06b6d4, 0x0891b2, 0x22d3ee, 0xa5f3fc][Math.floor(Math.random() * 4)],
+            wireframe: Math.random() > 0.5,
+            transparent: true,
+            opacity: Math.random() * 0.6 + 0.1,
+          });
+          const mesh = new THREE.Mesh(geo, mat);
+          mesh.position.set(
+            (Math.random() - 0.5) * 16,
+            (Math.random() - 0.5) * 8,
+            (Math.random() - 0.5) * 6
+          );
+          mesh.userData = {
+            rotSpeed: { x: (Math.random() - 0.5) * 0.03, y: (Math.random() - 0.5) * 0.03 },
+            flashSpeed: Math.random() * 0.05 + 0.01,
+            flashOffset: Math.random() * Math.PI * 2,
+            driftX: (Math.random() - 0.5) * 0.005,
+            driftY: (Math.random() - 0.5) * 0.003,
+          };
+          scene.add(mesh);
+          particles.push(mesh);
+        }
+
+        let t = 0;
+        const animate = () => {
+          requestAnimationFrame(animate);
+          t += 1;
+          particles.forEach((m) => {
+            m.rotation.x += m.userData.rotSpeed.x;
+            m.rotation.y += m.userData.rotSpeed.y;
+            m.position.x += m.userData.driftX;
+            m.position.y += m.userData.driftY;
+            // Wrap around edges
+            if (Math.abs(m.position.x) > 9) m.userData.driftX *= -1;
+            if (Math.abs(m.position.y) > 5) m.userData.driftY *= -1;
+            // Flash opacity
+            m.material.opacity = 0.1 + 0.55 * Math.abs(Math.sin(t * m.userData.flashSpeed + m.userData.flashOffset));
+          });
+          renderer.render(scene, camera);
+        };
+        animate();
+
+        const ro = new ResizeObserver(() => {
+          const w = canvas.parentElement.offsetWidth;
+          const h = canvas.parentElement.offsetHeight;
+          renderer.setSize(w, h);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        });
+        ro.observe(canvas.parentElement);
+      };
+      document.head.appendChild(script);
+    }}
+    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 0 }}
+  />
+
+  {/* Content */}
+  <div className="container mx-auto text-center relative z-20">
+    {/* Architectural Badge */}
+    <div className="mb-6 reveal fade-in-down">
+      <span className="inline-block px-4 py-2 bg-cyan-200/50 backdrop-blur-sm rounded-full text-cyan-700 text-sm font-medium tracking-wide">
+        WHAT WE OFFER
+      </span>
+    </div>
+
+    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4 sm:mb-6 reveal fade-in-down relative">
+      Our{" "}
+      <span className="relative inline-block text-cyan-500">
+        Services
+        <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-24 h-1 bg-cyan-500 rounded-full"></span>
+      </span>
+    </h1>
+
+    <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto px-4 reveal fade-in-up font-light" style={{ animationDelay: "0.2s" }}>
+      Comprehensive architectural and interior design solutions tailored
+      to your needs
+    </p>
+  </div>
+
+  {/* Bottom Accent Line */}
+  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"
+       style={{ zIndex: 15 }} />
+
+  {/* Add animation styles */}
+  <style jsx>{`
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+    }
+
+    .fade-in-down {
+      animation: fadeInDown 0.8s ease-out forwards;
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+  `}</style>
+</section>
 
       {/* Services Grid */}
       <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
@@ -211,12 +394,12 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gray-50 relative">
+<section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-r from-cyan-500 to-cyan-600">
         <div className="container mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-4 sm:mb-6 reveal fade-in-down">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 reveal fade-in-down">
             Ready to Start Your Project?
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 reveal fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 reveal fade-in-up" style={{ animationDelay: "0.2s" }}>
             Let's discuss your vision and create something extraordinary
             together
           </p>
@@ -251,7 +434,7 @@ const Services = () => {
             transform: translateX(0);
           }
         }
-        
+
         @keyframes fadeInRight {
           from {
             opacity: 0;
@@ -262,7 +445,7 @@ const Services = () => {
             transform: translateX(0);
           }
         }
-        
+
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -273,7 +456,7 @@ const Services = () => {
             transform: translateY(0);
           }
         }
-        
+
         @keyframes fadeInDown {
           from {
             opacity: 0;
@@ -284,7 +467,7 @@ const Services = () => {
             transform: translateY(0);
           }
         }
-        
+
         @keyframes popIn {
           from {
             opacity: 0;
@@ -295,7 +478,7 @@ const Services = () => {
             transform: scale(1);
           }
         }
-        
+
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -304,41 +487,41 @@ const Services = () => {
             opacity: 1;
           }
         }
-        
+
         .reveal {
           opacity: 0;
         }
-        
+
         .animate-in {
           animation-fill-mode: both;
           animation-duration: 0.6s;
           animation-timing-function: ease-out;
         }
-        
+
         .fade-in-left.animate-in {
           animation-name: fadeInLeft;
         }
-        
+
         .fade-in-right.animate-in {
           animation-name: fadeInRight;
         }
-        
+
         .fade-in-up.animate-in {
           animation-name: fadeInUp;
         }
-        
+
         .fade-in-down.animate-in {
           animation-name: fadeInDown;
         }
-        
+
         .pop-in.animate-in {
           animation-name: popIn;
         }
-        
+
         .fade-in.animate-in {
           animation-name: fadeIn;
         }
-        
+
         @keyframes blob {
           0% {
             transform: translate(0px, 0px) scale(1);
@@ -353,15 +536,15 @@ const Services = () => {
             transform: translate(0px, 0px) scale(1);
           }
         }
-        
+
         .animate-blob {
           animation: blob 7s infinite;
         }
-        
+
         .animation-delay-2000 {
           animation-delay: 2s;
         }
-        
+
         .animation-delay-4000 {
           animation-delay: 4s;
         }

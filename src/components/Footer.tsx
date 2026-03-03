@@ -1,11 +1,11 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaPinterestP,
-  FaTwitter,
-  FaWhatsapp,
+    FaFacebookF,
+    FaInstagram,
+    FaLinkedinIn,
+    FaPinterestP,
+    FaTwitter,
+    FaWhatsapp,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -34,7 +34,7 @@ const Footer = () => {
               </p>
               <div className="flex space-x-4 mt-4">
                 <a
-                  href="https://instagram.com/nithamdesigns"
+                  href="https://www.instagram.com/nitham_designs?igsh=MXRpNmNuYzJmZGJpcQ=="
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-pink-600 transition-colors"
@@ -173,21 +173,33 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <Mail className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
                   <a
-                    href="mailto:contact@nithamdesigns.com"
+                    href="mailto:enquiry@nithamdesigns.in"
                     className="text-gray-300 hover:text-white transition-all duration-200"
                   >
-                    contact@nithamdesigns.com
+                    enquiry@nithamdesigns.in
                   </a>
                 </div>
+
                 <div className="flex items-start space-x-3">
-                  <Phone className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
-                  <a
-                    href="tel:+910000543210"
-                    className="text-gray-300 hover:text-white transition-all duration-200"
-                  >
-                    +91 00000 43210
-                  </a>
-                </div>
+  <Phone className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+
+  <div className="flex flex-col space-y-1">
+    <a
+      href="tel:+916379939849"
+      className="text-gray-300 hover:text-white transition-all duration-200"
+    >
+      +91 63799 39849
+    </a>
+
+    <a
+      href="tel:+919381485740"
+      className="text-gray-300 hover:text-white transition-all duration-200"
+    >
+      +91 93814 85740
+    </a>
+  </div>
+</div>
+
                 <div className="pt-2">
                   <a
                     href="https://wa.me/910000543210"
@@ -376,10 +388,10 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <Mail className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
                   <a
-                    href="mailto:contact@nithamdesigns.com"
+                    href="mailto:enquiry@nithamdesigns.in"
                     className="text-gray-300 hover:text-white transition-all duration-200"
                   >
-                    contact@nithamdesigns.com
+                    enquiry@nithamdesigns.in
                   </a>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -388,7 +400,7 @@ const Footer = () => {
                     href="tel:+910000543210"
                     className="text-gray-300 hover:text-white transition-all duration-200"
                   >
-                    +91 00000 43210
+                    +91 6379939849
                   </a>
                 </div>
                 <div className="pt-2">

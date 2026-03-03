@@ -1,5 +1,6 @@
 import { ArrowUp, Award, CheckCircle, Clock, Users } from "lucide-react";
 import { useEffect, useState } from "react";
+import yyy from "../PHOTO-2026-02-25-17-49-35.jpg";
 
 const About = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -46,64 +47,66 @@ const About = () => {
   return (
     <div className="overflow-hidden">
       {/* Founder Section */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-white">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto">
-            <div className="reveal fade-in-left order-2 lg:order-1">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6 sm:mb-8 relative">
-                Meet Our Founder
-                <span className="absolute -bottom-2 left-0 w-16 sm:w-20 h-1 bg-cyan-500 rounded-full"></span>
-              </h2>
-              <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 text-justify leading-relaxed">
-                Ar. Sujitha Meenakshi, founder of Nitham Designs in Chennai, is an architect who approaches design with intuition, clarity, and purpose. A graduate of Anna University's School of Architecture and Planning (2022), she believes architecture goes beyond buildings — it's about creating meaningful, livable spaces that reflect both beauty and function.
-              </p>
-              <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 text-justify leading-relaxed">
-                Her work focuses on delivering personalized architectural and interior design solutions that align with your lifestyle, values, and everyday needs. With a strong foundation in sustainable and conscious design, she ensures that each space feels intentional and timeless.
-              </p>
 
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                <div className="bg-cyan-50 rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-cyan-500 rounded-full flex items-center justify-center mb-3 sm:mb-4">
-                    <Award className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-black mb-2 sm:mb-3">
-                    Leadership
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-600">
-                    Guiding innovative design solutions with expertise and vision.
-                  </p>
-                </div>
-                <div className="bg-cyan-50 rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-cyan-500 rounded-full flex items-center justify-center mb-3 sm:mb-4">
-                    <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-black mb-2 sm:mb-3">
-                    Excellence
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-600">
-                    Committed to delivering exceptional results in every project.
-                  </p>
-                </div>
-              </div>
-            </div>
+     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-white">
+  <div className="container mx-auto">
+    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto">
 
-            <div className="reveal fade-in-right order-1 lg:order-2 mb-8 lg:mb-0">
-              <div className="relative">
-                <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-br from-cyan-100 to-cyan-300 rounded-2xl transform -rotate-3 opacity-70"></div>
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                  alt="Founder of Nitham Designs"
-                  className="rounded-2xl shadow-2xl w-full h-64 sm:h-80 lg:h-96 object-cover relative z-10"
-                />
-                <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-cyan-500 text-white p-4 sm:p-6 rounded-xl shadow-lg z-20 transition-all duration-300 hover:scale-105">
-                  <h4 className="text-lg sm:text-xl font-bold mb-1">3+ years</h4>
-                  <p className="text-cyan-100 text-sm sm:text-base">Design Experience</p>
-                </div>
-              </div>
+      {/* LEFT SIDE: TEXT + CARDS */}
+      <div className="reveal fade-in-left order-2 lg:order-1 space-y-8">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black relative">
+          Meet Our Founder
+          <span className="absolute -bottom-2 left-0 w-16 sm:w-20 h-1 bg-cyan-500 rounded-full"></span>
+        </h2>
+
+        <p className="text-base sm:text-lg text-gray-700 text-justify leading-relaxed">
+          Ar. Sujitha Meenakshi, founder of Nitham Designs in Chennai, is an architect who approaches design with intuition, clarity, and purpose. A graduate of Anna University's School of Architecture and Planning (2022), she believes architecture goes beyond buildings — it's about creating meaningful, livable spaces that reflect both beauty and function.
+        </p>
+
+        <p className="text-base sm:text-lg text-gray-700 text-justify leading-relaxed">
+          Her work focuses on delivering personalized architectural and interior design solutions that align with your lifestyle, values, and everyday needs. With a strong foundation in sustainable and conscious design, she ensures that each space feels intentional and timeless.
+        </p>
+
+        {/* CARDS */}
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
+          <div className="bg-cyan-50 rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-cyan-500 rounded-full flex items-center justify-center mb-3 sm:mb-4">
+              <Award className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
             </div>
+            <h3 className="text-lg sm:text-xl font-bold text-black mb-2 sm:mb-3">
+              Leadership
+            </h3>
+            <p className="text-sm sm:text-base text-gray-600">
+              Guiding innovative design solutions with expertise and vision.
+            </p>
+          </div>
+
+          <div className="bg-cyan-50 rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-cyan-500 rounded-full flex items-center justify-center mb-3 sm:mb-4">
+              <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-black mb-2 sm:mb-3">
+              Excellence
+            </h3>
+            <p className="text-sm sm:text-base text-gray-600">
+              Committed to delivering exceptional results in every project.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* RIGHT SIDE: IMAGE */}
+      <div className="reveal fade-in-right order-1 lg:order-2 mb-8 lg:mb-0">
+        <img
+  src={yyy}
+  alt="Founder"
+  className="w-full h-[560px] sm:h-[120px] lg:h-full object-cover rounded-2xl shadow-lg"
+/>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* Process Section */}
     {/* Process Section */}
@@ -239,31 +242,119 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 relative">
-            {/* Floating elements in background */}
-            <div className="absolute -top-6 left-1/4 w-16 h-16 sm:w-24 sm:h-24 bg-cyan-100 rounded-full opacity-10"></div>
-            <div className="absolute top-4 right-1/4 w-12 h-12 sm:w-16 sm:h-16 bg-cyan-200 rounded-full opacity-10"></div>
-            <div className="absolute bottom-0 left-6 w-14 h-14 sm:w-20 sm:h-20 bg-cyan-300 rounded-full opacity-10"></div>
 
-            {[
-              { icon: Users, value: "20+", label: "Happy Clients" },
-              { icon: Award, value: "50+", label: "Projects Completed" },
-              { icon: Clock, value: "3+", label: "Years Experience" }
-            ].map((stat, index) => (
-              <div key={index} className="text-center reveal fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 relative overflow-hidden shadow-lg transition-all duration-300 hover:scale-110">
-                  <stat.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white relative z-10" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-cyan-600 opacity-90"></div>
-                </div>
-                <h3 className="text-3xl sm:text-4xl font-bold text-black mb-2">{stat.value}</h3>
-                <p className="text-gray-600 text-base sm:text-lg">{stat.label}</p>
+
+
+      <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+  {/* Architectural blueprint background */}
+  <div className="absolute inset-0 opacity-[0.03]" style={{
+    backgroundImage: `
+      linear-gradient(#0891b2 1px, transparent 1px),
+      linear-gradient(90deg, #0891b2 1px, transparent 1px)
+    `,
+    backgroundSize: '30px 30px'
+  }}></div>
+
+  {/* Floating cyan architectural elements */}
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute -top-20 -right-20 w-64 h-64 border-8 border-cyan-200/20 rounded-full"></div>
+    <div className="absolute -bottom-20 -left-20 w-80 h-80 border-8 border-cyan-200/20 rounded-full"></div>
+
+    {/* Vertical lines */}
+    <div className="absolute left-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-200/20 to-transparent"></div>
+    <div className="absolute right-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-200/20 to-transparent"></div>
+  </div>
+
+  <div className="container mx-auto max-w-6xl relative z-10">
+    {/* Section header with architectural line */}
+    <div className="text-center mb-12 relative">
+      <span className="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium tracking-wider mb-4">
+        OUR IMPACT
+      </span>
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Numbers That Speak
+      </h2>
+      <div className="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {[
+        { icon: Users, value: "20+", label: "Happy Clients", desc: "Across multiple industries" },
+        { icon: Award, value: "50+", label: "Projects Completed", desc: "Delivered with excellence" },
+        { icon: Clock, value: "3+", label: "Years Experience", desc: "Of design innovation" }
+      ].map((stat, index) => (
+        <div
+          key={index}
+          className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 reveal fade-in"
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          {/* Corner accents */}
+          <div className="absolute top-0 left-0 w-4 h-8 border-t-2 border-l-2 border-cyan-500/30 rounded-tl-2xl"></div>
+          <div className="absolute top-0 right-0 w-4 h-8 border-t-2 border-r-2 border-cyan-500/30 rounded-tr-2xl"></div>
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-cyan-500/30 rounded-bl-2xl"></div>
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-500/30 rounded-br-2xl"></div>
+
+          {/* Icon with architectural frame */}
+          <div className="relative mb-6 inline-block">
+            <div className="w-15 h-20 bg-gradient-to-br from-cyan-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto transform rotate-45 group-hover:rotate-0 transition-all duration-500">
+              <div className="transform -rotate-45 group-hover:rotate-0 transition-all duration-500">
+                <stat.icon className="w-10 h-8 text-white" />
               </div>
-            ))}
+            </div>
+            {/* Decorative rings */}
+            <div className="absolute inset-0 border-2 border-cyan-500/30 rounded-2xl animate-ping-slow opacity-0 group-hover:opacity-100"></div>
           </div>
+
+          {/* Content */}
+          <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2 font-mono">{stat.value}</h3>
+          <p className="text-lg font-semibold text-cyan-600 mb-2">{stat.label}</p>
+          <p className="text-gray-500 text-sm">{stat.desc}</p>
+
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 group-hover:w-12 h-0.5 bg-cyan-500 transition-all duration-300"></div>
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* Background architectural accent */}
+
+  </div>
+
+  {/* Add animation styles */}
+  <style jsx>{`
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pingSlow {
+      75%, 100% {
+        transform: scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .animate-ping-slow {
+      animation: pingSlow 2s cubic-bezier(0, 0, 0.2, 1);
+    }
+  `}</style>
+</section>
+
+
 
       {/* Scroll to Top Button */}
       {showScrollButton && (

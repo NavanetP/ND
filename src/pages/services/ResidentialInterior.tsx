@@ -1,13 +1,101 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import {
-  CheckCircle,
-  Home as HomeIcon,
-  Users,
-  Heart,
-  Lightbulb,
+    CheckCircle,
+    ChevronLeft,
+    ChevronRight,
+    Home as HomeIcon
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
+
+
+// ---------------------------------------------------------------------------
+// Image Slider Component for each testimonial
+// ---------------------------------------------------------------------------
+const TestimonialImageSlider = ({ images }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  return (
+    <div className="relative h-48 overflow-hidden group/slider">
+      {/* Slider Images */}
+      <div className="relative h-full">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={image}
+
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60"></div>
+          </div>
+        ))}
+      </div>
+
+
+
+      {/* Navigation Buttons */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 opacity-0 group-hover/slider:opacity-100 z-10"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-600" />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 opacity-0 group-hover/slider:opacity-100 z-10"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-600" />
+      </button>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center space-x-1.5 z-10">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
+              index === currentSlide
+                ? "bg-cyan-500 scale-125"
+                : "bg-white/70 hover:bg-white"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Slide Counter */}
+      <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-md z-10">
+        <span className="text-xs text-white font-medium">
+          {currentSlide + 1}/{images.length}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+// ---------------------------------------------------------------------------
+// Main Page Component
+// ---------------------------------------------------------------------------
 const ResidentialInterior = () => {
   useEffect(() => {
     const observerOptions = {
@@ -31,31 +119,64 @@ const ResidentialInterior = () => {
 
   return (
     <div className="overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="py-8 px-4 sm:py-10 sm:px-6 bg-gradient-to-br from-cyan-50 to-cyan-50">
-        <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cyan-500 rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 reveal">
-              <HomeIcon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 sm:mb-6 reveal">
-              Residential Interior Design
-            </h1>
-            <p className="text-xl sm:text-2xl text-cyan-600 font-semibold mb-4 sm:mb-6 reveal">
-              Live in a Space That Tells Your Story
-            </p>
-            <p className="text-base sm:text-lg text-gray-700 text-justify sm:text-center reveal">
-              Your home isn't just a place — it's a feeling. At Nitham Designs,
-              we specialize in residential interior design that mirrors your
-              personality, adapts to your lifestyle, and stands the test of
-              time. From minimalist urban apartments to elegant villas, we
-              create homes that feel like you.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* ----------------------------------------------------------------- */}
+      {/* Hero Section                                                       */}
+      {/* ----------------------------------------------------------------- */}
+   {/* Hero Section - Single Image with Content */}
+<section className="relative h-[90vh] overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src="https://fastly.picsum.photos/id/1047/536/354.jpg?hmac=Hqs-Rz08WiLc2elw4gHvY1P-wxDJfmiZ-CSay2BH-1U"
+      alt="Residential Interior Design Hero"
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
+  </div>
 
-      {/* Why Choose Us */}
+  {/* Content Overlay */}
+  <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6">
+    <div className="max-w-4xl mx-auto text-center">
+      {/* Icon */}
+      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-cyan-500 rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+        <HomeIcon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+      </div>
+
+      {/* Heading */}
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
+        Residential Interior Design
+      </h1>
+
+      {/* Subheading */}
+      <p className="text-xl sm:text-2xl text-cyan-300 font-semibold mb-4 sm:mb-6 drop-shadow-md">
+        Live in a Space That Tells Your Story
+      </p>
+
+      {/* Description */}
+      <p className="text-base sm:text-lg text-white/90 text-justify sm:text-center px-2 mb-8 sm:mb-10 drop-shadow">
+        Your home isn't just a place — it's a feeling. At Nitham Designs,
+        we specialize in residential interior design that mirrors your
+        personality, adapts to your lifestyle, and stands the test of
+        time. From minimalist urban apartments to elegant villas, we
+        create homes that feel like you.
+      </p>
+
+      {/* Caption Pill */}
+      <div className="flex justify-center">
+        <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
+          <div className="absolute -inset-[2px] rounded-full from-cyan-400/30 to-cyan-400/30 blur-sm" />
+          <p className="relative z-10 text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">
+            like you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      {/* ----------------------------------------------------------------- */}
+      {/* Why Choose Us                                                       */}
+      {/* ----------------------------------------------------------------- */}
       <section className="py-8 px-4 sm:py-10 sm:px-6">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
@@ -70,10 +191,15 @@ const ResidentialInterior = () => {
                 "Design with empathy — we listen before we plan",
                 "3D or VR walkthrough to experience your future home based on demand",
               ].map((benefit, index) => (
-                <div key={index} className="flex items-start space-x-3 sm:space-x-4 reveal">
+                <div
+                  key={index}
+                  className="flex items-start space-x-3 sm:space-x-4 reveal"
+                >
                   <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500 mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="font-bold text-black text-sm sm:text-base">{benefit}</h3>
+                    <h3 className="font-bold text-black text-sm sm:text-base">
+                      {benefit}
+                    </h3>
                   </div>
                 </div>
               ))}
@@ -82,7 +208,9 @@ const ResidentialInterior = () => {
         </div>
       </section>
 
-      {/* What's Included */}
+      {/* ----------------------------------------------------------------- */}
+      {/* What's Included                                                     */}
+      {/* ----------------------------------------------------------------- */}
       <section className="py-8 px-4 sm:py-10 sm:px-6 bg-gray-50">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
@@ -105,7 +233,9 @@ const ResidentialInterior = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700 font-medium text-sm sm:text-base">{item}</span>
+                    <span className="text-gray-700 font-medium text-sm sm:text-base">
+                      {item}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -114,7 +244,9 @@ const ResidentialInterior = () => {
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* ----------------------------------------------------------------- */}
+      {/* Process Section                                                     */}
+      {/* ----------------------------------------------------------------- */}
       <section className="py-8 px-4 sm:py-10 sm:px-6">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
@@ -154,7 +286,10 @@ const ResidentialInterior = () => {
                     "We complete the final touch — ready to live in.",
                 },
               ].map((process, index) => (
-                <div key={index} className="flex items-start space-x-4 sm:space-x-6 reveal">
+                <div
+                  key={index}
+                  className="flex items-start space-x-4 sm:space-x-6 reveal"
+                >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center font-bold text-base sm:text-lg flex-shrink-0">
                     {process.step}
                   </div>
@@ -162,7 +297,9 @@ const ResidentialInterior = () => {
                     <h3 className="text-lg sm:text-xl font-bold text-black mb-2">
                       {process.title}
                     </h3>
-                    <p className="text-gray-700 text-sm sm:text-base">{process.description}</p>
+                    <p className="text-gray-700 text-sm sm:text-base">
+                      {process.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -171,63 +308,15 @@ const ResidentialInterior = () => {
         </div>
       </section>
 
-      {/* Who We Work With */}
-      <section className="py-8 px-4 sm:py-10 sm:px-6 bg-gray-50">
-        <div className="container mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
-            Who Do We Work With?
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-              <div className="bg-white p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-lg reveal">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-4">
-                  <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
-                  Newlyweds or Young Couples
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  Setting up their first home with style and functionality.
-                </p>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-lg reveal">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-4">
-                  <Users className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
-                  Growing Families
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  Renovating for more functionality and comfort.
-                </p>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-lg reveal">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-4">
-                  <HomeIcon className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-black mb-3">NRIs</h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  Designing for parents or retirement spaces.
-                </p>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-lg reveal">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-4">
-                  <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
-                  Apartment Owners
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  Wanting modern, modular upgrades.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ----------------------------------------------------------------- */}
+      {/* Who We Work With                                                    */}
+      {/* ----------------------------------------------------------------- */}
 
-      {/* FAQs */}
-      <section className="py-8 px-4 sm:py-10 sm:px-6">
+
+      {/* ----------------------------------------------------------------- */}
+      {/* FAQs                                                                */}
+      {/* ----------------------------------------------------------------- */}
+      <section className="py-8 px-4 sm:py-10 sm:px-6 bg-gray-50">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
             Frequently Asked Questions
@@ -256,15 +345,19 @@ const ResidentialInterior = () => {
                 <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
                   {faq.question}
                 </h3>
-                <p className="text-gray-700 text-sm sm:text-base">{faq.answer}</p>
+                <p className="text-gray-700 text-sm sm:text-base">
+                  {faq.answer}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-8 px-4 sm:py-10 sm:px-6 bg-gradient-to-r from-cyan-500 to-cyan-600">
+      {/* ----------------------------------------------------------------- */}
+      {/* CTA Section                                                         */}
+      {/* ----------------------------------------------------------------- */}
+      <section className="py-8 px-4 sm:py-10 sm:px-6 bg-gradient-to-r from-cyan-500 to-cyan-500">
         <div className="container mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 reveal">
             Let's Create a Home That Feels Like You

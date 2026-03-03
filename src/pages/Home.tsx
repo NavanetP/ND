@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import {
-  Building2,
-  Palette,
-  Home as HomeIcon,
-  Hammer,
-  RefreshCw,
-  Trees,
-  CheckCircle,
   ArrowRight,
+  ArrowUp,
+  Award,
+  Building2,
+  CheckCircle,
   ChevronLeft,
   ChevronRight,
-  ArrowUp,
-  Mail,
-  Phone,
-  MapPin,
-  Instagram,
   Clock,
+  Hammer,
+  Home as HomeIcon,
+  Instagram,
+  Mail,
+  MapPin,
+  Palette,
+  Phone,
+  RefreshCw,
   Star,
-  Users,
-  Award,
-  TrendingUp,
-  Grid3x3,
-  Triangle,
+  Trees,
+  Users
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import q3 from "../img_home/06.jpg";
+import q4 from "../img_home/07.jpg";
+import q5 from "../img_home/08.jpg";
+import q1 from "../img_home/2.png";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -41,22 +43,22 @@ const Home = () => {
   const slides = [
     {
       image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        q1,
       caption: "Modern living spaces designed for contemporary lifestyles",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80",
+        q3,
       caption: "Architectural excellence with thoughtful design details",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+q4,
       caption: "Elegant interiors that blend comfort with sophistication",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
+q5,
       caption: "Seamless integration of indoor and outdoor living spaces",
     },
   ];
@@ -125,7 +127,7 @@ const Home = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/navanet88@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/enquiry@nithamdesigns.in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -173,10 +175,10 @@ const Home = () => {
   );
 
   const stats = [
-    { icon: Users, number: "200+", label: "Happy Clients" },
-    { icon: Building2, number: "300+", label: "Projects Completed" },
-    { icon: Award, number: "5+", label: "Years Experience" },
-    { icon: Star, number: "4.9", label: "Client Rating" }
+    { icon: Users, number: "20+", label: "Happy Clients" },
+    { icon: Building2, number: "50+", label: "Projects Completed" },
+    { icon: Award, number: "3+", label: "Years Experience" },
+
   ];
 
   return (
@@ -221,7 +223,7 @@ const Home = () => {
           50% { transform: translateY(-20px); }
         }
         .pattern-overlay {
-          background-image: 
+          background-image:
             linear-gradient(45deg, transparent 35%, rgba(6, 182, 212, 0.05) 35%, rgba(6, 182, 212, 0.05) 65%, transparent 65%),
             linear-gradient(-45deg, transparent 35%, rgba(6, 182, 212, 0.05) 35%, rgba(6, 182, 212, 0.05) 65%, transparent 65%);
           background-size: 80px 80px;
@@ -238,7 +240,7 @@ const Home = () => {
       `}</style>
 
       {/* Background Pattern Elements */}
-     
+
 
       {/* Image Slider Section */}
       <section className="relative h-[70vh] sm:h-[80vh] md:h-[90vh] overflow-hidden">
@@ -254,10 +256,10 @@ const Home = () => {
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-             
+
              <div className="absolute bottom-16 sm:bottom-24 left-0 right-0 flex justify-center">
   <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)] transition-all duration-500 hover:scale-[1.05]">
-    
+
     {/* Accent ring */}
     <div className="absolute -inset-[2px] rounded-full  from-cyan-400/30 to-cyan-400/30 blur-sm"></div>
 
@@ -333,10 +335,10 @@ const Home = () => {
         that serve everyday needs while standing the test of time.
       </p>
     </div>
-
+ {/*
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 reveal px-4">
       <Link to="/#transform-space" className="w-full sm:w-auto">
-        <button className="w-full sm:w-auto group relative px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white rounded-full font-bold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl">
+        <button className="w-full sm:w-auto group relative px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white rounded-full font-bold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl">
           <span className="relative z-10 flex items-center justify-center">
             Contact Us
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -344,10 +346,10 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-cyan-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
       </Link>
-    </div>
+    </div>*/}
 
     {/* Stats Section */}
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto reveal px-4">
+    <div className="grid grid-cols-3 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto reveal px-4">
       {stats.map((stat, index) => (
         <div key={index} className="text-center group">
           <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/80 backdrop-blur-md rounded-xl sm:rounded-2xl mb-3 sm:mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
@@ -596,16 +598,17 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Testimonial 1 */}
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 reveal border border-white/20 group hover:scale-[1.02]">
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-500 reveal border border-white/20 group hover:scale-[1.02]">
               <div className="flex items-center mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-xl shadow-lg flex-shrink-0">
-                  RK
+               <div className="w-12 h-12 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-xl shadow-lg flex-shrink-0">
+                  1
                 </div>
-                <div className="ml-3 sm:ml-4">
-                  <h4 className="font-bold text-gray-900 text-base sm:text-lg">Rajesh Kumar</h4>
-                  <p className="text-cyan-600 text-xs sm:text-sm font-medium">Chennai Home Renovation</p>
+                <div className="ml-1 sm:ml-2">
+                  <h4 className="font-bold text-gray-900 text-base sm:text-md"> Mr. Vijayakumar</h4>
+                  <p className="text-cyan-600 text-xs sm:text-sm font-medium">Property Owner | Namakkal | Residential Interior
+</p>
                 </div>
               </div>
               <div className="flex mb-3 sm:mb-4">
@@ -614,19 +617,21 @@ const Home = () => {
                 ))}
               </div>
               <p className="text-sm sm:text-base text-gray-700 italic leading-relaxed">
-                "Nitham Designs transformed our outdated home into a modern sanctuary. Their attention to detail and creative solutions for our small space exceeded our expectations."
+Nitham Designs recently completed the interior work for our home, and I must say—they did a phenomenal job! They transformed our ideas into a beautiful and functional reality. I truly appreciate the effort they put into every detail of the project.
               </p>
             </div>
 
             {/* Testimonial 2 */}
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 reveal border border-white/20 group hover:scale-[1.02]">
+           <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-500 reveal border border-white/20 group hover:scale-[1.02]">
               <div className="flex items-center mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-xl shadow-lg flex-shrink-0">
-                  SP
+               <div className="w-12 h-12 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-xl shadow-lg flex-shrink-0">
+                  2
                 </div>
-                <div className="ml-3 sm:ml-4">
-                  <h4 className="font-bold text-gray-900 text-base sm:text-lg">Priya S.</h4>
-                  <p className="text-cyan-600 text-xs sm:text-sm font-medium">Commercial Interior Project</p>
+                <div className="ml-1 sm:ml-2">
+                  <h4 className="font-bold text-gray-900 text-base sm:text-md">Mr. Balaji
+</h4>
+                  <p className="text-cyan-600 text-xs sm:text-sm font-medium">Property Owner | Srivilliputhur | Architectural Planning cum Residential Interior
+</p>
                 </div>
               </div>
               <div className="flex mb-3 sm:mb-4">
@@ -635,19 +640,19 @@ const Home = () => {
                 ))}
               </div>
               <p className="text-sm sm:text-base text-gray-700 italic leading-relaxed">
-                "We hired Nitham Designs for our office renovation, and the results were phenomenal. They created a productive yet beautiful workspace that our employees love."
+                Nitham designs home elevation designer and architect exceeded my expectations with their professionalism and attention to detail. Their innovative designs greatly enhanced the aesthetic appeal of my residence. I highly recommend their services to anyone seeking quality and excellence.
               </p>
             </div>
 
             {/* Testimonial 3 */}
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 reveal border border-white/20 group hover:scale-[1.02]">
+           <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-500 reveal border border-white/20 group hover:scale-[1.02]">
               <div className="flex items-center mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-xl shadow-lg flex-shrink-0">
-                  VM
+                <div className="w-12 h-12 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-xl shadow-lg flex-shrink-0">
+                  3
                 </div>
-                <div className="ml-3 sm:ml-4">
-                  <h4 className="font-bold text-gray-900 text-base sm:text-lg">Vikram & Meena</h4>
-                  <p className="text-cyan-600 text-xs sm:text-sm font-medium">New Home Construction</p>
+                <div className="ml-1 sm:ml-2">
+                  <h4 className="font-bold text-gray-900 text-base sm:text-md">Mr. Santharam </h4>
+                  <p className="text-cyan-600 text-xs sm:text-sm font-medium">Endosys Technologies| Chennai | Commercial Interior</p>
                 </div>
               </div>
               <div className="flex mb-3 sm:mb-4">
@@ -656,9 +661,35 @@ const Home = () => {
                 ))}
               </div>
               <p className="text-sm sm:text-base text-gray-700 italic leading-relaxed">
-                "From architectural planning to interior execution, Nitham Designs handled everything seamlessly. Our home is exactly how we envisioned it - functional and beautiful."
+Great design and sincere follow up with the workers to ensure good quality.
+
               </p>
             </div>
+
+
+{/* Testimonial 4 */}
+           <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-500 reveal border border-white/20 group hover:scale-[1.02]">
+              <div className="flex items-center mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-xl shadow-lg flex-shrink-0">
+                  4
+                </div>
+                <div className="ml-1 sm:ml-2">
+                  <h4 className="font-bold text-gray-900 text-base sm:text-md">Mr. Venkatesh
+</h4>
+                  <p className="text-cyan-600 text-xs sm:text-sm font-medium">Property Owner | Mayiladuthurai | Commercial Interior</p>
+                </div>
+              </div>
+              <div className="flex mb-3 sm:mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 italic leading-relaxed">
+Much appreciated work, delivered the plan layout and subsequent requirements with detail explanation in short interval. Understand our needs and suggested the optimum way to utilise the maximum space with their explicit ideas. Also, they're expertise in providing end to end solution for construction related queries and support. Committed towards to Customer Satisfaction.
+              </p>
+            </div>
+
+
           </div>
         </div>
       </section>
@@ -691,13 +722,13 @@ const Home = () => {
             <div className="reveal">
               <div className="bg-white/90 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border border-gray-200">
                 <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 flex items-center">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-cyan-500 to-cyan-500 rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                     <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                   Send us a Message
                 </h3>
                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 flex items-center">
-                  
+
                 </h3>
 
                 {/* Status Messages */}
@@ -805,7 +836,7 @@ const Home = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full bg-gradient-to-r from-cyan-500 to-cyan-600 text-white py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:from-cyan-600 hover:to-cyan-700 hover:scale-[1.02] hover:shadow-2xl'
+                      className={`w-full bg-gradient-to-r from-cyan-500 to-cyan-500 text-white py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:from-cyan-600 hover:to-cyan-700 hover:scale-[1.02] hover:shadow-2xl'
                         } shadow-xl flex items-center justify-center space-x-2 sm:space-x-3`}
                     >
                       {isSubmitting ? (
@@ -830,7 +861,7 @@ const Home = () => {
             <div className="reveal space-y-6 sm:space-y-8">
               <div className="bg-white/90 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-6 sm:p-6 md:p-5  border border-grey-700">
                 <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 flex items-center">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-cyan-500 to-cyan-500 rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                     <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                   Get in Touch
@@ -844,7 +875,7 @@ const Home = () => {
                     <div>
                       <h4 className="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">Our Location</h4>
                       <p className="text-gray-600 text-base sm:text-lg">Chennai, Tamil Nadu</p>
-                      <p className="text-xs sm:text-sm text-gray-500 mt-1">Serving Chennai and surrounding areas</p>
+
                     </div>
                   </div>
 
@@ -855,12 +886,12 @@ const Home = () => {
                     <div>
                       <h4 className="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">Email Us</h4>
                       <a
-                        href="mailto:navanet85@gmail.com"
+                        href="mailto:enquiry@nithamdesigns.in"
                         className="text-cyan-600 hover:text-cyan-700 transition-colors text-base sm:text-lg font-medium break-all"
                       >
-                        DUMMY@gmail.com
+                       enquiry@nithamdesigns.in
                       </a>
-                      <p className="text-xs sm:text-sm text-gray-500 mt-1">We respond within 24 hours</p>
+
                     </div>
                   </div>
 
@@ -870,8 +901,9 @@ const Home = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">Call Us</h4>
-                      <p className="text-gray-600 text-base sm:text-lg font-medium">+91-XXXXXXXXXX</p>
-                      <p className="text-xs sm:text-sm text-gray-500 mt-1">Available during business hours</p>
+                      <p className="text-gray-600 text-base sm:text-lg font-medium">+91 6379939849</p>
+                       <p className="text-gray-600 text-base sm:text-lg font-medium">+91 9381485740</p>
+
                     </div>
                   </div>
 
@@ -882,14 +914,14 @@ const Home = () => {
                     <div>
                       <h4 className="font-bold text-gray-900 text-base sm:text-lg mb-1 sm:mb-2">Follow Us</h4>
                       <a
-                        href="https://instagram.com/nithamdesigns"
+                        href="https://www.instagram.com/nitham_designs?igsh=MXRpNmNuYzJmZGJpcQ%3D%3D"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-cyan-600 hover:text-cyan-700 transition-colors text-base sm:text-lg font-medium"
                       >
                         @nithamdesigns
                       </a>
-                      <p className="text-xs sm:text-sm text-gray-500 mt-1">See our latest projects</p>
+
                     </div>
                   </div>
 
