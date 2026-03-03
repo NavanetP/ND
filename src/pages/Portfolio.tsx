@@ -1,9 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   Home, Building2, RefreshCw, DraftingCompass, Trees,
   ArrowUp, X, ChevronLeft, ChevronRight, ZoomIn,
 } from "lucide-react";
+
+// Type declarations for Three.js and custom properties
+declare global {
+  interface HTMLCanvasElement {
+    _threeInit?: boolean;
+  }
+  interface Window {
+    THREE?: any;
+  }
+}
 
 // ╔══════════════════════════════════════════════════════════════════════╗
 //
@@ -384,7 +394,6 @@ const portfolioData = [
           k,
           j,
           g,
-
           // p5_5_img1, p5_5_img2, p5_5_img3, p5_5_img4, p5_5_img5,
         ],
       },
@@ -398,10 +407,16 @@ const portfolioData = [
 // ─── Types ───────────────────────────────────────────────────────────────────
 type LB = { catIdx: number; projIdx: number; imgIdx: number } | null;
 
+// Define type for particle mesh with userData
+
+
 // ─── Component ───────────────────────────────────────────────────────────────
 const Portfolio = () => {
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [lb, setLb] = useState<LB>(null);
+
+  // Add ref for canvas container to safely access parent element
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
 
   const lbCat  = lb !== null ? portfolioData[lb.catIdx]       : null;
   const lbProj = lbCat       ? lbCat.projects[lb!.projIdx]    : null;
@@ -473,89 +488,96 @@ const Portfolio = () => {
 
   </svg>
 
-  {/* Three.js Canvas Background - Your existing code */}
-  <canvas
-    ref={(canvas) => {
-      if (!canvas || canvas._threeInit) return;
-      canvas._threeInit = true;
+  {/* Three.js Canvas Background - Add container div with ref */}
+  <div ref={canvasContainerRef} className="absolute inset-0" style={{ zIndex: 0 }}>
+    <canvas
+      ref={(canvas) => {
+        if (!canvas || canvas._threeInit) return;
+        canvas._threeInit = true;
 
-      const script = document.createElement("script");
-      script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-      script.onload = () => {
-        const THREE = window.THREE;
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        const script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+        script.onload = () => {
+          const THREE = (window as any).THREE;
+          if (!THREE || !canvasContainerRef.current) return;
 
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 1000);
-        camera.position.z = 5;
+          const container = canvasContainerRef.current;
 
-        // Create flashing geometric meshes
-        const geometries = [
-          new THREE.OctahedronGeometry(0.15),
-          new THREE.TetrahedronGeometry(0.15),
-          new THREE.IcosahedronGeometry(0.12),
-        ];
+          const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+          renderer.setSize(container.offsetWidth, container.offsetHeight);
+          renderer.setPixelRatio(window.devicePixelRatio);
 
-        const particles = [];
-        for (let i = 0; i < 10; i++) {
-          const geo = geometries[Math.floor(Math.random() * geometries.length)];
-          const mat = new THREE.MeshBasicMaterial({
-            color: [0x06b6d4, 0x0891b2, 0x22d3ee, 0xa5f3fc][Math.floor(Math.random() * 4)],
-            wireframe: Math.random() > 0.5,
-            transparent: true,
-            opacity: Math.random() * 0.6 + 0.1,
-          });
-          const mesh = new THREE.Mesh(geo, mat);
-          mesh.position.set(
-            (Math.random() - 0.5) * 16,
-            (Math.random() - 0.5) * 8,
-            (Math.random() - 0.5) * 6
-          );
-          mesh.userData = {
-            rotSpeed: { x: (Math.random() - 0.5) * 0.03, y: (Math.random() - 0.5) * 0.03 },
-            flashSpeed: Math.random() * 0.05 + 0.01,
-            flashOffset: Math.random() * Math.PI * 2,
-            driftX: (Math.random() - 0.5) * 0.005,
-            driftY: (Math.random() - 0.5) * 0.003,
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+          camera.position.z = 5;
+
+          // Create flashing geometric meshes
+          const geometries = [
+            new THREE.OctahedronGeometry(0.15),
+            new THREE.TetrahedronGeometry(0.15),
+            new THREE.IcosahedronGeometry(0.12),
+          ];
+
+          const particles: any[] = [];
+          for (let i = 0; i < 10; i++) {
+            const geo = geometries[Math.floor(Math.random() * geometries.length)];
+            const mat = new THREE.MeshBasicMaterial({
+              color: [0x06b6d4, 0x0891b2, 0x22d3ee, 0xa5f3fc][Math.floor(Math.random() * 4)],
+              wireframe: Math.random() > 0.5,
+              transparent: true,
+              opacity: Math.random() * 0.6 + 0.1,
+            });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.set(
+              (Math.random() - 0.5) * 16,
+              (Math.random() - 0.5) * 8,
+              (Math.random() - 0.5) * 6
+            );
+            mesh.userData = {
+              rotSpeed: { x: (Math.random() - 0.5) * 0.03, y: (Math.random() - 0.5) * 0.03 },
+              flashSpeed: Math.random() * 0.05 + 0.01,
+              flashOffset: Math.random() * Math.PI * 2,
+              driftX: (Math.random() - 0.5) * 0.005,
+              driftY: (Math.random() - 0.5) * 0.003,
+            };
+            scene.add(mesh);
+            particles.push(mesh);
+          }
+
+          let t = 0;
+          const animate = () => {
+            requestAnimationFrame(animate);
+            t += 1;
+            particles.forEach((m: any) => {
+              m.rotation.x += m.userData.rotSpeed.x;
+              m.rotation.y += m.userData.rotSpeed.y;
+              m.position.x += m.userData.driftX;
+              m.position.y += m.userData.driftY;
+              // Wrap around edges
+              if (Math.abs(m.position.x) > 9) m.userData.driftX *= -1;
+              if (Math.abs(m.position.y) > 5) m.userData.driftY *= -1;
+              // Flash opacity
+              m.material.opacity = 0.1 + 0.55 * Math.abs(Math.sin(t * m.userData.flashSpeed + m.userData.flashOffset));
+            });
+            renderer.render(scene, camera);
           };
-          scene.add(mesh);
-          particles.push(mesh);
-        }
+          animate();
 
-        let t = 0;
-        const animate = () => {
-          requestAnimationFrame(animate);
-          t += 1;
-          particles.forEach((m) => {
-            m.rotation.x += m.userData.rotSpeed.x;
-            m.rotation.y += m.userData.rotSpeed.y;
-            m.position.x += m.userData.driftX;
-            m.position.y += m.userData.driftY;
-            // Wrap around edges
-            if (Math.abs(m.position.x) > 9) m.userData.driftX *= -1;
-            if (Math.abs(m.position.y) > 5) m.userData.driftY *= -1;
-            // Flash opacity
-            m.material.opacity = 0.1 + 0.55 * Math.abs(Math.sin(t * m.userData.flashSpeed + m.userData.flashOffset));
+          const ro = new ResizeObserver(() => {
+            if (!container) return;
+            const w = container.offsetWidth;
+            const h = container.offsetHeight;
+            renderer.setSize(w, h);
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
           });
-          renderer.render(scene, camera);
+          ro.observe(container);
         };
-        animate();
-
-        const ro = new ResizeObserver(() => {
-          const w = canvas.parentElement.offsetWidth;
-          const h = canvas.parentElement.offsetHeight;
-          renderer.setSize(w, h);
-          camera.aspect = w / h;
-          camera.updateProjectionMatrix();
-        });
-        ro.observe(canvas.parentElement);
-      };
-      document.head.appendChild(script);
-    }}
-    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 0 }}
-  />
+        document.head.appendChild(script);
+      }}
+      style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+    />
+  </div>
 
   {/* Content */}
   <div className="container mx-auto text-center relative z-20">
@@ -579,10 +601,6 @@ const Portfolio = () => {
       Showcasing our finest architectural and interior design projects
     </p>
 
-
-
-
-
   </div>
 
   {/* Bottom Accent Line */}
@@ -590,7 +608,7 @@ const Portfolio = () => {
        style={{ zIndex: 15 }} />
 
   {/* Add animation styles */}
-  <style jsx>{`
+  <style>{`
     @keyframes fadeInDown {
       from {
         opacity: 0;
