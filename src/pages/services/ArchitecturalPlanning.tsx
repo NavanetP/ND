@@ -2,7 +2,6 @@ import { ArrowUp, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 import p1_2_img1 from "../../Architectural planning/Mr.Balaji Residence/Balaji residence second floor plan-Model.jpg";
 
 const ArchitecturalPlanning = () => {
@@ -12,7 +11,7 @@ const ArchitecturalPlanning = () => {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: "0px 0px -30px 0px", // Adjusted for mobile
+      rootMargin: "0px 0px -30px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -52,86 +51,66 @@ const ArchitecturalPlanning = () => {
 
   return (
     <div className="relative">
-      {/* Hero Section */}
-  {/* Hero Section - Single Image with Content */}
-<section className="relative h-[40vh] xs:h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] 2xl:h-[95vh] overflow-hidden">
-  {/* Background Image */}
-  <div className="absolute inset-0">
-    <img
-      src={p1_2_img1}
-      alt="Architectural Planning Hero"
-      className="w-full h-full object-cover object-center xs:object-top sm:object-center"
-      loading="eager"
-    />
-    {/* Dark overlay for text readability - responsive opacity */}
-    <div className="absolute inset-0 bg-gradient-to-b
-      from-black/40 via-black/30 to-black/60
-      xs:from-black/35 xs:via-black/25 xs:to-black/65
-      sm:from-black/30 sm:via-black/20 sm:to-black/60"
-    />
-  </div>
 
-  {/* Content Overlay - responsive padding */}
-  <div className="relative z-10 h-full flex flex-col items-center justify-center
-    px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12
-    py-4 xs:py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16">
+      {/* ── SECTION 1: Full-Width Hero Image ── */}
+      <section className="relative h-[45vh] xs:h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[90vh] 2xl:h-[95vh] overflow-hidden">
+        <img
+          src={p1_2_img1}
+          alt="Architectural Planning Hero"
+          className="w-full h-full object-cover object-center xs:object-top sm:object-center"
+          loading="eager"
+        />
+        {/* Subtle bottom fade to blend into next section */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-cyan-600/80 to-transparent" />
+      </section>
 
-    <div className="w-full max-w-[320px] xs:max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto text-center">
+      {/* ── SECTION 2: Content Banner ── */}
+      <section className="bg-gradient-to-br from-cyan-600 via-cyan-500 to-cyan-400 py-10 xs:py-12 sm:py-14 md:py-16 lg:py-20 px-4 xs:px-6 sm:px-8 md:px-10">
+        <div className="max-w-5xl mx-auto text-center">
 
-      {/* Heading - fully responsive font sizes */}
-      <h1 className="font-bold text-white mb-2 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-7
-        text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl
-        drop-shadow-xl leading-tight">
-        Architectural Planning
-      </h1>
+          {/* Heading */}
+          <h1 className="font-bold text-white mb-4 xs:mb-5 sm:mb-6 md:mb-7
+            text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
+            drop-shadow-lg leading-tight tracking-tight">
+            Architectural Planning
+          </h1>
 
-      {/* Description Card - fully responsive */}
-      <div className="relative z-10 w-full px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8">
-        <p className="text-white text-justify sm:text-center
-          text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
-          px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12
-          py-3 xs:py-4 sm:py-5 md:py-6 lg:py-7 xl:py-8
-          bg-white/10 backdrop-blur-[2px] xs:backdrop-blur-sm
-          border border-white/20 xs:border-white/30
-          rounded-lg xs:rounded-xl sm:rounded-2xl md:rounded-2xl
-          shadow-sm xs:shadow-md sm:shadow-lg md:shadow-xl
-          leading-relaxed">
-          Architecture is the foundation of a lasting space. At Nitham
-          Designs, we blend creativity with clarity to design residential
-          and commercial spaces across Tamil Nadu that are structurally
-          sound, climate-responsive, and aesthetically timeless.
-        </p>
-      </div>
+          {/* Divider accent */}
+          <div className="flex items-center justify-center gap-3 mb-5 xs:mb-6 sm:mb-7 md:mb-8">
+            <span className="h-px w-12 xs:w-16 sm:w-20 bg-white/50 rounded-full" />
+            <span className="w-2 h-2 rounded-full bg-white/80" />
+            <span className="h-px w-12 xs:w-16 sm:w-20 bg-white/50 rounded-full" />
+          </div>
 
-      {/* Responsive spacing */}
-      <div className="h-2 xs:h-3 sm:h-4 md:h-5 lg:h-6" />
-
-      {/* Caption Pill - fully responsive */}
-      <div className="flex justify-center px-2 xs:px-3">
-        <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400
-          text-white whitespace-nowrap
-          px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10
-          py-1.5 xs:py-2 sm:py-2.5 md:py-3 lg:py-3.5
-          rounded-full
-          shadow-[0_2px_8px_rgba(56,189,248,0.3)]
-          xs:shadow-[0_4px_12px_rgba(56,189,248,0.35)]
-          sm:shadow-[0_4px_15px_rgba(56,189,248,0.4)]
-          md:shadow-[0_6px_20px_rgba(56,189,248,0.45)]
-          transition-all duration-500 hover:scale-105">
-          <div className="absolute -inset-[1px] xs:-inset-[2px] rounded-full
-            from-cyan-400/20 to-cyan-400/20 blur-[2px] xs:blur-sm" />
-          <p className="relative z-10
-            text-[9px] xs:text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg
-            font-semibold tracking-wide drop-shadow-md">
-            Spaces Built to Endure, Flow, and Inspire
+          {/* Description */}
+          <p className="text-white/90 text-justify xs:text-center
+            text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl
+            leading-relaxed max-w-3xl mx-auto mb-7 xs:mb-8 sm:mb-9 md:mb-10">
+            Architecture is the foundation of a lasting space. At Nitham
+            Designs, we blend creativity with clarity to design residential
+            and commercial spaces across Tamil Nadu that are structurally
+            sound, climate-responsive, and aesthetically timeless.
           </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-      {/* Benefits Section */}
+          {/* Caption Pill */}
+          <div className="flex justify-center">
+            <div className="relative bg-white/20 backdrop-blur-sm border border-white/40
+              text-white whitespace-nowrap
+              px-5 xs:px-6 sm:px-7 md:px-8 lg:px-10
+              py-2 xs:py-2.5 sm:py-3 md:py-3.5
+              rounded-full shadow-lg
+              transition-all duration-500 hover:scale-105 hover:bg-white/30">
+              <p className="relative z-10
+                text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg
+                font-semibold tracking-wide drop-shadow-sm">
+                Spaces Built to Endure, Flow, and Inspire
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Benefits Section ── */}
       <section className="py-8 sm:py-10 px-4 sm:px-6">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
@@ -140,55 +119,38 @@ const ArchitecturalPlanning = () => {
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               <div className="space-y-4 sm:space-y-6">
-                <div className="flex items-start space-x-3 sm:space-x-4 reveal">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-black text-sm sm:text-base mb-1 sm:mb-2">
-                      Optimized site usage with zoning precision
+                {[
+                  "Optimized site usage with zoning precision",
+                  "Natural light & ventilation maximized",
+                  "Vaastu-compliant layouts (if needed)",
+                ].map((benefit, i) => (
+                  <div key={i} className="flex items-start space-x-3 sm:space-x-4 reveal">
+                    <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500 mt-1 flex-shrink-0" />
+                    <h3 className="font-bold text-black text-sm sm:text-base">
+                      {benefit}
                     </h3>
                   </div>
-                </div>
-                <div className="flex items-start space-x-3 sm:space-x-4 reveal">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-black text-sm sm:text-base mb-1 sm:mb-2">
-                      Natural light & ventilation maximized
-                    </h3>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3 sm:space-x-4 reveal">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-black text-sm sm:text-base mb-1 sm:mb-2">
-                      Vaastu-compliant layouts (if needed)
-                    </h3>
-                  </div>
-                </div>
+                ))}
               </div>
               <div className="space-y-4 sm:space-y-6">
-                <div className="flex items-start space-x-3 sm:space-x-4 reveal">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-black text-sm sm:text-base mb-1 sm:mb-2">
-                      Modern, minimal, and locally adapted
+                {[
+                  "Modern, minimal, and locally adapted",
+                  "Cost-efficient planning with long-term durability",
+                ].map((benefit, i) => (
+                  <div key={i} className="flex items-start space-x-3 sm:space-x-4 reveal">
+                    <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500 mt-1 flex-shrink-0" />
+                    <h3 className="font-bold text-black text-sm sm:text-base">
+                      {benefit}
                     </h3>
                   </div>
-                </div>
-                <div className="flex items-start space-x-3 sm:space-x-4 reveal">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-black text-sm sm:text-base mb-1 sm:mb-2">
-                      Cost-efficient planning with long-term durability
-                    </h3>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What's Included */}
+      {/* ── What's Included ── */}
       <section className="py-8 sm:py-10 px-4 sm:px-6 bg-gray-50">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
@@ -221,7 +183,7 @@ const ArchitecturalPlanning = () => {
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* ── Process Section ── */}
       <section className="py-8 sm:py-10 px-4 sm:px-6">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
@@ -233,8 +195,7 @@ const ArchitecturalPlanning = () => {
                 {
                   step: "1",
                   title: "Site & Client Briefing",
-                  description:
-                    "Understanding the land, needs, and aspirations.",
+                  description: "Understanding the land, needs, and aspirations.",
                 },
                 {
                   step: "2",
@@ -279,7 +240,7 @@ const ArchitecturalPlanning = () => {
         </div>
       </section>
 
-      {/* FAQs */}
+      {/* ── FAQs ── */}
       <section className="py-8 sm:py-10 px-4 sm:px-6 bg-gray-50">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-8 sm:mb-12 reveal">
@@ -292,8 +253,7 @@ const ArchitecturalPlanning = () => {
                 answer: "Yes. We support all necessary municipal drawings.",
               },
               {
-                question:
-                  "Can you design a modern house within Vaastu principles?",
+                question: "Can you design a modern house within Vaastu principles?",
                 answer:
                   "Absolutely. We balance cultural sensitivity with contemporary design.",
               },
@@ -317,15 +277,14 @@ const ArchitecturalPlanning = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* ── CTA Section ── */}
       <section className="py-8 sm:py-10 px-4 sm:px-6 bg-gradient-to-r from-cyan-500 to-cyan-500">
         <div className="container mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 reveal">
             Planning to Build Something Enduring?
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-cyan-100 mb-6 sm:mb-8 reveal px-2">
-            Start your home or project the right way — with thoughtful
-            architecture.
+            Start your home or project the right way — with thoughtful architecture.
           </p>
           <Link to="/#transform-space">
             <button className="bg-white text-cyan-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl reveal w-full sm:w-auto">
@@ -335,7 +294,7 @@ const ArchitecturalPlanning = () => {
         </div>
       </section>
 
-      {/* Scroll to Top Button */}
+      {/* ── Scroll to Top Button ── */}
       {showScrollButton && (
         <button
           onClick={scrollToTop}
@@ -346,92 +305,43 @@ const ArchitecturalPlanning = () => {
         </button>
       )}
 
-      {/* CSS animations */}
+      {/* ── CSS Animations ── */}
       <style>{`
         @keyframes fadeInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
+          from { opacity: 0; transform: translateX(-30px); }
+          to   { opacity: 1; transform: translateX(0); }
         }
-
         @keyframes fadeInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
+          from { opacity: 0; transform: translateX(30px); }
+          to   { opacity: 1; transform: translateX(0); }
         }
-
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeInDown {
-          from {
-            opacity: 0;
-            transform: translateY(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-30px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes popIn {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
+          from { opacity: 0; transform: scale(0.95); }
+          to   { opacity: 1; transform: scale(1); }
         }
 
-        .reveal {
-          opacity: 0;
-        }
+        .reveal { opacity: 0; }
 
         .animate-in {
           animation-fill-mode: both;
           animation-duration: 0.6s;
           animation-timing-function: ease-out;
-        }
-
-        .fade-in-left.animate-in {
-          animation-name: fadeInLeft;
-        }
-
-        .fade-in-right.animate-in {
-          animation-name: fadeInRight;
-        }
-
-        .fade-in-up.animate-in {
           animation-name: fadeInUp;
         }
 
-        .fade-in-down.animate-in {
-          animation-name: fadeInDown;
-        }
-
-        .pop-in.animate-in {
-          animation-name: popIn;
-        }
+        .fade-in-left.animate-in  { animation-name: fadeInLeft; }
+        .fade-in-right.animate-in { animation-name: fadeInRight; }
+        .fade-in-up.animate-in    { animation-name: fadeInUp; }
+        .fade-in-down.animate-in  { animation-name: fadeInDown; }
+        .pop-in.animate-in        { animation-name: popIn; }
       `}</style>
     </div>
   );

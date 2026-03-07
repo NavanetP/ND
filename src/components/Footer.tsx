@@ -165,11 +165,16 @@ const Footer = () => {
               </h3>
               <div className="space-y-4 text-sm">
                 <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
-                  <span className="text-gray-300">
-                    123 Design Street, Chennai, Tamil Nadu 600001
-                  </span>
-                </div>
+  <MapPin className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+  <a
+    href="https://www.google.com/search?client=opera&hs=PB4&sca_esv=2e8ca08f5eada962&sxsrf=ANbL-n445uwLp2HstDJTQ3hBZkAk8IqJmA:1772601178094&kgmid=/g/11vt4v8j5r&q=Nitham+Designs&shem=dlvsc,shrtsdl&shndl=30&source=sh/x/loc/uni/m1/1&kgs=7b55a48e20f37c38&utm_source=dlvsc,shrtsdl,sh/x/loc/uni/m1/1"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-300 hover:text-cyan-400 transition-colors"
+  >
+    First Floor, Plot No 20, ARK Nagar Main Rd, opp. Ruby Landmark, Karasangal, Chennai, Tamil Nadu 601301
+  </a>
+</div>
                 <div className="flex items-start space-x-3">
                   <Mail className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
                   <a
@@ -202,7 +207,7 @@ const Footer = () => {
 
                 <div className="pt-2">
                   <a
-                    href="https://wa.me/910000543210"
+                    href="https://wa.me/916379939849"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 rounded-md text-white transition-colors text-sm"
@@ -382,7 +387,7 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
                   <span className="text-gray-300">
-                    123 Design Street, Chennai, Tamil Nadu 600001
+                   First Floor, Plot No 20, ARK Nagar Main Rd, opp. Ruby Landmark, Karasangal, Chennai, Tamil Nadu 601301
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -397,7 +402,7 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <Phone className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
                   <a
-                    href="tel:+910000543210"
+                    href="tel:+916379939849"
                     className="text-gray-300 hover:text-white transition-all duration-200"
                   >
                     +91 6379939849
@@ -405,7 +410,7 @@ const Footer = () => {
                 </div>
                 <div className="pt-2">
                   <a
-                    href="https://wa.me/910000543210"
+                    href="https://wa.me/916379939849"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 rounded-md text-white transition-colors text-sm"

@@ -127,7 +127,7 @@ q5,
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/enquiry@nithamdesigns.in', {
+      const response = await fetch('https://formsubmit.co/ajax/nithamdesigns@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
