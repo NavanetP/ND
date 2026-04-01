@@ -88,7 +88,7 @@ function App() {
             <Route path="/why-choose-us" element={<WhyChooseUs />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
+           
           </Routes>
         </main>
         <Footer />

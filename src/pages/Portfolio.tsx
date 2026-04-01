@@ -111,7 +111,7 @@ import vvvv from "../Residential Interior Design/Mr.Shankar narayanan residence/
 import mmmmn from "../Residential Interior Design/Mr.Shankar narayanan residence/22.png";
 
 import l from "../Residential Interior Design/Mr.Vijaykumar residence/03.jpg";
-import k from "../Residential Interior Design/Mr.Vijaykumar residence/04.jpg";
+import k from "../Residential Interior Design/Mr.Vijaykumar residence/07.jpg";
 import j from "../Residential Interior Design/Mr.Vijaykumar residence/05.jpg";
 import g from "../Residential Interior Design/Mr.Vijaykumar residence/06.jpg";
 

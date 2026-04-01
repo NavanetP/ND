@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import pp1_21 from "../../Commercial Interior Design/Sanjana Bridal boutique/01.jpg";
+import pp1_21 from "../../Commercial Interior Design/Sanjana Bridal boutique/100.jpg";
 
 const InteriorExecution = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
