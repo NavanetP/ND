@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"
 import { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
@@ -6,7 +7,7 @@ import Preloader from "./components/Preloader";
 import ScrollToAnchor from "./components/ScrollToAnchor";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
+
 import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import Services from "./pages/Services";
@@ -88,10 +89,11 @@ function App() {
             <Route path="/why-choose-us" element={<WhyChooseUs />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/blog" element={<Blog />} />
-           
+
           </Routes>
         </main>
         <Footer />
+<Analytics /> 
       </div>
     </Router>
   );
