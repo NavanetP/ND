@@ -821,6 +821,25 @@ const Portfolio = () => {
 
       {/* ── Styles ── */}
       <style>{`
+
+      /* Image protection */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+.img-protected {
+  position: relative;
+  overflow: hidden;
+}
+.img-protected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+  
         @keyframes fadeInUp   { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
         @keyframes fadeInDown { from{opacity:0;transform:translateY(-22px)} to{opacity:1;transform:translateY(0)} }
         @keyframes popIn      { from{opacity:0;transform:scale(0.93)} to{opacity:1;transform:scale(1)} }

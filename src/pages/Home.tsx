@@ -71,6 +71,8 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
+  
+
   // Scroll event listener for scroll-to-top button
   useEffect(() => {
     const handleScroll = () => {
@@ -135,6 +137,26 @@ const Home = () => {
   return (
     <div className="relative overflow-x-hidden">
       <style>{`
+
+      /* Image protection */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+.img-protected {
+  position: relative;
+  overflow: hidden;
+}
+.img-protected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+
         /* ── Reveal animation ── */
         .reveal {
           opacity: 0;
@@ -251,7 +273,8 @@ const Home = () => {
               key={index}
               className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
             >
-              <img src={slide.image} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" />
+              <img src={slide.image} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" onContextMenu={(e) => e.preventDefault()}
+  onDragStart={(e) => e.preventDefault()} />
               <div className="absolute bottom-16 sm:bottom-24 left-0 right-0 flex justify-center">
                 <div className="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-[0_4px_15px_rgba(56,189,248,0.4)]">
                   <p className="text-[11px] sm:text-sm md:text-base font-semibold tracking-wide drop-shadow-md">

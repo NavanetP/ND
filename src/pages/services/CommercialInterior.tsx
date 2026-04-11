@@ -276,6 +276,26 @@ const CommercialInterior = () => {
 
       {/* ── CSS Animations ── */}
       <style>{`
+
+      /* Image protection */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+.img-protected {
+  position: relative;
+  overflow: hidden;
+}
+.img-protected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+
         @keyframes fadeInLeft {
           from { opacity: 0; transform: translateX(-30px); }
           to   { opacity: 1; transform: translateX(0); }

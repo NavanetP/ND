@@ -322,6 +322,26 @@ const About = () => {
 
   {/* Add animation styles */}
   <style>{`
+
+  /* Image protection */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+.img-protected {
+  position: relative;
+  overflow: hidden;
+}
+.img-protected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+
     @keyframes fadeIn {
       from {
         opacity: 0;
